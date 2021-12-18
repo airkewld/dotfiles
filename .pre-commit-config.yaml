@@ -11,4 +11,6 @@ repos:
   - repo: local
     hooks:
       - id: ansible-playbook
-        entry: ansible-playbook config.yaml --diff
+        name: ansible-playbook
+        language: script
+        entry: ./bootstrap.sh
