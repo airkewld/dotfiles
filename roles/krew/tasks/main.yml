@@ -1,5 +1,5 @@
 ---
 # tasks file for krew
 - name: Install kubectl krew plugin(s)
-  shell: k krew install "{{ item }}"
+  shell: kubectl krew install "{{ item }}"
   with_items: "{{ krew_packages }}"
