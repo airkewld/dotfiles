@@ -1,0 +1,14 @@
+---
+# tasks file for file-struct
+
+- name: Create .config dir
+  ansible.builtin.file:
+    path: ~/.config
+    state: directory
+    mode: '0755'
+
+- name: Create nvim dir
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: directory
+    mode: '0755'
