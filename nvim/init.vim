@@ -104,6 +104,11 @@ nnoremap <leader>cc <cmd>:cclose<cr>
 nnoremap <leader>cn <cmd>:cnext<cr>
 nnoremap <leader>cb <cmd>:cprevious<cr>
 
+" Plug
+nnoremap <leader>pli <cmd>:PlugInstall<cr>
+nnoremap <leader>plu <cmd>:PlugUpdate<cr>
+nnoremap <leader>plg <cmd>:PlugUpgrade<cr>
+
 " Harpoon
 nnoremap <leader>ha <cmd>:lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>hm <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>

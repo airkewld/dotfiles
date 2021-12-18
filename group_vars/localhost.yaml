@@ -44,11 +44,10 @@ brew_packages:
   - htop
   - jq
   - k9s
-  - Checkmarx/tap/kics
+  - checkmarx/tap/kics
   - kind
   - kompose
   - krew
-  - kube-capacity
   - kube-linter
   - kube-ps1
   - kubebuilder
@@ -60,7 +59,6 @@ brew_packages:
   - minikube
   - neovim
   - opa
-  - popeye
   - pre-commit
   - pwgen
   - reattach-to-user-namespace
