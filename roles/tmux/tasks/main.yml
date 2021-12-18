@@ -1,0 +1,17 @@
+---
+# tasks file for tmux
+- name: Copy tmux config
+  ansible.builtin.copy:
+    src: tmux/tmux.conf
+    dest: ~/.tmux.conf
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0644'
+
+- name: Copy tmux script
+  ansible.builtin.copy:
+    src: tmux/tmux.sh
+    dest: ~/.config/tmux.shf
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0744'

@@ -1,0 +1,101 @@
+autoload -U colors && colors
+
+## History
+HISTSIZE=10000
+SAVEHIST=10000
+
+#linkerd
+export PATH=$PATH:$HOME/.linkerd2/bin
+
+# Path to your oh-my-zsh installation.
+plugins=(
+  git
+  ansible
+  docker
+  kubectl
+  terraform
+  bundler
+  dotenv
+  osx
+  rake
+  rbenv
+  ruby
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
+export ZSH="/Users/__USERNAME__/.oh-my-zsh"
+prompt_context () { }
+
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+ZSH_THEME="agnoster"
+
+CASE_SENSITIVE="true"
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+alias cls="clear"
+alias k=kubectl
+
+alias v="nvim ."
+alias vim="nvim"
+
+
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias del='rm -rfv'
+alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
+
+
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+KUBE_PS1_SYMBOL_DEFAULT=''
+KUBE_PS1_SEPARATOR=''
+KUBE_PS1_SUFFIX=' - '
+KUBE_PS1_PREFIX=''
+
+alias cck='kubeon; kubectl config use-context ARMED_DEV1'
+alias cek='kubeon; kubectl config use-context ARMED_PROD1'
+alias mek='kubeon; kubectl config use-context MON_PROD1'
+alias ldk='kubeon; kubectl config use-context LOCAL_KIND_CLUSTER'
+alias kgv="kubectl get constraint -o name -A -o=custom-columns='NAME:.metadata.name,ACTION:.spec.enforcementAction,POLICY:.spec.parameters,VIOLATIONS:.status.totalViolations'"
+alias kns='kubens'
+
+# terraform fun
+alias tfp='terraform plan -out plan'
+alias tfa='terraform apply plan'
+alias tfd='terraform destroy -auto-approve'
+alias tfi='terraform init'
+
+# work dirs
+alias work='cd ~/work'
+alias dso='cd ~/work/devsecops'
+alias armed='cd ~/work/v2'
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+## krew
+export PATH="${PATH}:${HOME}/.krew/bin"
+
+## direnv
+eval "$(direnv hook zsh)"
+
+## tmuxs
+alias tm="~/.config/tmux.sh"
+
+
+export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries

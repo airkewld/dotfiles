@@ -1,0 +1,10 @@
+---
+
+- name: Build OSX Dev Config
+  hosts: localhost
+
+  roles:
+  - pre-config
+  - file-hierarchy
+  - tmux
+  - nvim
