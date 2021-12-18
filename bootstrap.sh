@@ -29,6 +29,15 @@ else
   echo "ansible already installed."
 fi
 
+# oh-my-zsh
+if ! stat /Users/oscarr/.oh-my-zsh
+then
+  echo "Installing oh-my-zsh..."
+  /bin/bash  -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "oh-my-zsh already installed."
+fi
+
 ## Run playbook
 ansible-playbook config.yaml --diff
 

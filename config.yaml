@@ -5,7 +5,7 @@
 
   roles:
   - pre_config
-  - file_struct
+  - oh_my_zsh
   - tmux
   - nvim
   - krew
