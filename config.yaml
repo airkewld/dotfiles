@@ -4,7 +4,8 @@
   hosts: localhost
 
   roles:
-  - pre-config
-  - file-struct
+  - pre_config
+  - file_struct
   - tmux
   - nvim
+  - krew
