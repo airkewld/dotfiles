@@ -6,6 +6,9 @@
     dest: ~/.tmux.conf
     owner: "{{ ansible_user_id }}"
     mode: '0644'
+  tags:
+    - tmux
+    - always
 
 - name: Copy tmux script
   ansible.builtin.copy:
@@ -13,3 +16,6 @@
     dest: ~/.config/tmux.sh
     owner: "{{ ansible_user_id }}"
     mode: '0744'
+  tags:
+    - tmux
+    - always

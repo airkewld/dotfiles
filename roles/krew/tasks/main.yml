@@ -2,4 +2,12 @@
 # tasks file for krew
 - name: Install kubectl krew plugin(s)
   shell: kubectl krew install "{{ item }}"
-  with_items: "{{ krew_packages }}"
+  with_items: "{{ krew_install }}"
+  tags:
+    - krew
+
+- name: Remove kubectl krew plugin(s)
+  shell: kubectl krew uninstall "{{ item }}"
+  with_items: "{{ krew_uninstall }}"
+  tags:
+    - krew

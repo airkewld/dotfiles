@@ -1,6 +1,6 @@
 ---
 # defaults file for pre-config
-krew_packages:
+krew_install:
   - access-matrix
   - advise-psp
   - change-ns
@@ -21,7 +21,9 @@ krew_packages:
   - tree
   - unused-volumes
 
-brew_packages:
+krew_uninstall: []
+
+brew_install:
   - ansible-lint
   - azure-cli
   - bash
@@ -80,3 +82,5 @@ brew_packages:
   - yubico-piv-tool
   - zsh
   - zsh-autosuggestions
+
+brew_uninstall: []
