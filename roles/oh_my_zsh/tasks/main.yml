@@ -6,3 +6,6 @@
     dest: ~/.zshrc
     owner: "{{ ansible_user_id }}"
     mode: '0644'
+  tags:
+    - zshrc
+    - always

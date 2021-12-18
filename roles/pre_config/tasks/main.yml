@@ -4,4 +4,14 @@
   community.general.homebrew:
     name: "{{ item }}"
     state: present
-  with_items: "{{ brew_packages }}"
+  with_items: "{{ brew_install }}"
+  tags:
+    - brew
+
+- name: Remove brew package(s)
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ brew_uninstall }}"
+  tags:
+    - brew

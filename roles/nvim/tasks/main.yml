@@ -6,3 +6,6 @@
     dest: ~/.config/nvim/init.vim
     owner: "{{ ansible_user_id }}"
     mode: '0644'
+  tags:
+    - nvim
+    - always
