@@ -1,0 +1,5 @@
+repos:
+- repo: https://github.com/Checkmarx/kics
+  rev: 'v1.4.8' # change to correct tag or sha
+  hooks:
+  - id: kics
