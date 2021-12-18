@@ -8,3 +8,7 @@ repos:
     hooks:
       - id: ansible-lint
         entry: ansible-lint -x command-instead-of-shell -x no-changed-when
+  - repo: local
+    hooks:
+      - id: ansible-playbook
+        entry: ansible-playbook config.yaml --diff
