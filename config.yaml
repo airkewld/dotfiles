@@ -5,6 +5,6 @@
 
   roles:
   - pre-config
-  - file-hierarchy
+  - file-struct
   - tmux
   - nvim
