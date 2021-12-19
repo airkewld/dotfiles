@@ -86,7 +86,7 @@ lua require('lspconfig').terraformls.setup{}
 let mapleader = " "
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fbb <cmd>Telescope file_browser hidden=true<cr>
-nnoremap <leader>df <cmd>Telescope find_files cwd=.. hidden=true no_ignore=true <cr>
+nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true no_ignore=true<cr>
 nnoremap <leader>lg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
