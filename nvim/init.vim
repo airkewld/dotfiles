@@ -25,6 +25,8 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
+source $HOME/.config/nvim/plug-config/coc.vim
+
 """ Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 " color shceme

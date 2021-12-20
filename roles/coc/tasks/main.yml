@@ -1,0 +1,11 @@
+---
+# tasks file for coc
+- name: Copy coc config
+  ansible.builtin.copy:
+    src: coc/coc.vim
+    dest: ~/.config/nvim/plug-config/
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - coc
+    - always
