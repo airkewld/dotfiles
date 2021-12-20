@@ -9,3 +9,13 @@
   tags:
     - coc
     - always
+
+- name: Copy coc settings
+  ansible.builtin.copy:
+    src: coc/coc-settings.json
+    dest: ~/.config/nvim/
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - coc
+    - always
