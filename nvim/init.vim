@@ -35,6 +35,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'neoclide/coc.nvim', {'master': 'v0.0.80'}
 Plug 'ctrlpvim/ctrlp.vim'
 " Borrowed from Aristides
 Plug 'ThePrimeagen/git-worktree.nvim'
