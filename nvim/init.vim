@@ -40,6 +40,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-utils/vim-man'
