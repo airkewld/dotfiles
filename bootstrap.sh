@@ -38,6 +38,8 @@ else
   echo "oh-my-zsh already installed."
 fi
 
+npm install -g dockerfile-language-server-nodejs
+
 ## Run playbook
 ansible-playbook config.yaml --diff
 
