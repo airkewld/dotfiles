@@ -119,6 +119,8 @@ nnoremap <leader>hm <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
 
+nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
+
 " DAMN WHITESPACE
 fun! TrimWhitespace()
   let l:save = winsaveview()
