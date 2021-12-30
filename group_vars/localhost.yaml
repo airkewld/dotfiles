@@ -43,6 +43,7 @@ brew_install:
   - gobject-introspection
   - golangci-lint
   - gosec
+  - gopls
   - htop
   - jq
   - k9s
