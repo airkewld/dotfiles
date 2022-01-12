@@ -36,6 +36,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
@@ -85,6 +86,8 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 lua require('lspconfig').tsserver.setup{ on_attach=require'completion'.on_attach }
 lua require('lspconfig').terraformls.setup{}
 
+"require for file_browser
+lua require("telescope").load_extension "file_browser"
 
 " Telescope remaps
 let mapleader = " "
