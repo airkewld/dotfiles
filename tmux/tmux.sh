@@ -14,5 +14,4 @@ then
 tmux attach-session -d -t DSO
 else
 tmux new-window -d -c ~/work/"$selected"
-tmux attach-session -d -t DSO
 fi
