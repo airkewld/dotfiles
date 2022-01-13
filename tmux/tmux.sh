@@ -12,5 +12,5 @@ if [[ -z "$TMUX" ]];
 then
 tmux attach-session -d -t DSO
 else
-tmux new-window -d -c "$selected"
+tmux new-window -c "$selected"
 fi
