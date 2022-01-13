@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 #set -x
 #if tmux ls | grep DSO;
 #then
