@@ -82,7 +82,7 @@ alias tfi='terraform init'
 
 # work dirs
 alias work='cd ~/work'
-alias dso='cd ~/work/devsecops'
+alias dso='cd ~/work/dso'
 alias armed='cd ~/work/v2'
 
 autoload -U +X bashcompinit && bashcompinit
