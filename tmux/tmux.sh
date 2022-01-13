@@ -10,7 +10,7 @@ tmux has-session -t "DSO" 2> /dev/null || TMUX='' tmux new-session -d -c "$selec
 
 if [[ -z "$TMUX" ]];
 then
-tmux attach-session -d -t DSO
+tmux attach-session -d -t DSO -c "$selected"
 else
 tmux new-window -c "$selected"
 fi
