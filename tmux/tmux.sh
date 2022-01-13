@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 if [[ $# -eq 1 ]]; then
     selected=$1
