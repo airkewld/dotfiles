@@ -5,6 +5,6 @@ then
 tmux attach-session -d -t DSO
 else
 tmux new-session -d -s DSO
-tmux new-window -d -c ~/work/devsecops
+tmux new-window -d -c ~/work/dso
 tmux attach-session -d -t DSO
 fi
