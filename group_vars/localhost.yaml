@@ -36,6 +36,7 @@ brew_install:
   - direnv
   - dive
   - docker
+  - fzf
   - gawk
   - git
   - glab
