@@ -105,6 +105,9 @@ nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
 nnoremap <leader>fg <cmd>:G<cr>
 nnoremap <leader>gp <cmd>:Git push<cr>
 nnoremap <leader>gpp <cmd>:G pull<cr>
+nnoremap <leader>wta <cmd>:G worktree add <cr>
+nnoremap <leader>wtl <cmd>:G worktree list<cr>
+nnoremap <leader>wtr <cmd>:G worktree remove <cr>
 
 " Quickfix
 nnoremap <leader>cc <cmd>:cclose<cr>
