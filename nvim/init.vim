@@ -123,10 +123,14 @@ nnoremap <leader>ha <cmd>:lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>hm <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
+
 "require for primagen worktree
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+
+" treesitter
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
 
