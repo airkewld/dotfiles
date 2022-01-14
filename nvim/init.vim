@@ -67,6 +67,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
 
+"call lua
+require('myconfig')
+
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "I«Esc>[38;2;%lu;%lu;%lum"
@@ -80,17 +83,6 @@ set background=dark
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-"lua require('nvim_lsp').tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require('lspconfig').tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require('lspconfig').terraformls.setup{}
-lua require('lspconfig').gopls.setup{ on_attach = function() }
-
-"require for file_browser
-lua require("telescope").load_extension "file_browser"
-
-"require for comments
-lua require('Comment').setup()
-
 " Telescope remaps
 let mapleader = " "
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -100,7 +92,6 @@ nnoremap <leader>fh <cmd>Telescope find_files hidden=true no_ignore=true<cr>
 nnoremap <leader>lg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-lua require("telescope").load_extension('harpoon')
 nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
 
 " Fugitive
@@ -125,12 +116,10 @@ nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
 
 "require for primagen worktree
-lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " treesitter
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
 

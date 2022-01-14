@@ -1,0 +1,11 @@
+---
+# tasks file for lua
+- name: Copy lua config
+  ansible.builtin.copy:
+    src: nvim/lua/myconfig.lua
+    dest: ~/.config/nvim/lua/myconfig.lua
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - lua
+    - always
