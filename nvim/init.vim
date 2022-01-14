@@ -89,6 +89,11 @@ lua require('lspconfig').terraformls.setup{}
 "require for file_browser
 lua require("telescope").load_extension "file_browser"
 
+"require for primagen worktree
+lua require("telescope").load_extension("git_worktree")
+nnoremap <leader>wc :lua require('telescope').extensions.git_worktree.create_git_worktree()
+nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+
 " Telescope remaps
 let mapleader = " "
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -106,9 +111,6 @@ nnoremap <leader>fg <cmd>:G<cr>
 nnoremap <leader>gp <cmd>:Git push<cr>
 nnoremap <leader>gpp <cmd>:G pull<cr>
 nnoremap <leader>wa :G worktree add -b
-nnoremap <leader>wc :G worktree add --checkout
-nnoremap <leader>wl <cmd>:G worktree list<cr>
-nnoremap <leader>wr :G worktree remove
 
 " Quickfix
 nnoremap <leader>cc <cmd>:cclose<cr>
