@@ -91,7 +91,7 @@ lua require("telescope").load_extension "file_browser"
 
 "require for primagen worktree
 lua require("telescope").load_extension("git_worktree")
-nnoremap <leader>wc :lua require('telescope').extensions.git_worktree.create_git_worktree()
+nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " Telescope remaps
