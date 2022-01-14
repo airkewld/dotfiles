@@ -82,14 +82,8 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 "lua require('nvim_lsp').tsserver.setup{ on_attach=require'completion'.on_attach }
 lua require('lspconfig').tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require('lspconfig').terraformls.setup{
-  on_attach = function()
-  end,
-}
-lua require('lspconfig').gopls.setup{
-  on_attach = function()
-  end,
-}
+lua require('lspconfig').terraformls.setup{}
+lua require('lspconfig').gopls.setup{}
 
 "require for file_browser
 lua require("telescope").load_extension "file_browser"
