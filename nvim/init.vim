@@ -25,8 +25,6 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
-source $HOME/.config/nvim/plug-config/coc.vim
-
 """ Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 " color shceme
@@ -38,7 +36,6 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 " Borrowed from Aristides
 Plug 'ThePrimeagen/git-worktree.nvim'
