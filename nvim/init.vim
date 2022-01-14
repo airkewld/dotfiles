@@ -89,6 +89,8 @@ lua require('lspconfig').terraformls.setup{}
 "require for file_browser
 lua require("telescope").load_extension "file_browser"
 
+"require for comments
+lua require('Comment').setup()
 
 " Telescope remaps
 let mapleader = " "
