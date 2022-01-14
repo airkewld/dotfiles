@@ -89,10 +89,6 @@ lua require('lspconfig').terraformls.setup{}
 "require for file_browser
 lua require("telescope").load_extension "file_browser"
 
-"require for primagen worktree
-lua require("telescope").load_extension("git_worktree")
-nnoremap <leader>wc :lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
-nnoremap <leader>wl :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " Telescope remaps
 let mapleader = " "
@@ -126,6 +122,10 @@ nnoremap <leader>ha <cmd>:lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>hm <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
+"require for primagen worktree
+lua require("telescope").load_extension("git_worktree")
+nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
 
