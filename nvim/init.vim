@@ -67,6 +67,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-lua/completion-nvim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'numToStr/Comment.nvim'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
