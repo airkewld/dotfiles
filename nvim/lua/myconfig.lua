@@ -19,7 +19,7 @@ require'lspconfig'.bashls.setup{}
 
 require'lspconfig'.diagnosticls.setup{}
 
-require'lspconfig'.golangci_lint_ls.setup{}
+-- require'lspconfig'.golangci_lint_ls.setup{}
 
 require'lspconfig'.gopls.setup{
   capabilities = capabilities,
