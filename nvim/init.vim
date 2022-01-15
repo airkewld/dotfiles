@@ -92,11 +92,11 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let mapleader = " "
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fbb <cmd>Telescope file_browser hidden=true<cr>
-nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
+" nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true no_ignore=true<cr>
 nnoremap <leader>lg <cmd>Telescope live_grep<cr>
 nnoremap <leader>bg <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
 
@@ -114,6 +114,7 @@ nnoremap <leader>cb <cmd>:cprevious<cr>
 nnoremap <leader>pli <cmd>:PlugInstall<cr>
 nnoremap <leader>plu <cmd>:PlugUpdate<cr>
 nnoremap <leader>plg <cmd>:PlugUpgrade<cr>
+nnoremap <leader>plc <cmd>:PlugClean<cr>
 
 " Harpoon
 nnoremap <leader>ha <cmd>:lua require("harpoon.mark").add_file()<cr>
@@ -122,7 +123,7 @@ nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
 
 "require for primagen worktree
-nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+nnoremap <leader>wn <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " treesitter
@@ -157,7 +158,6 @@ nnoremap <leader>df :lua require('telescope.builtin').find_files({ prompt_title 
 
 "call lua config
 lua require('myconfig')
-
 
 " lsp remaps
 nnoremap <silent> K <cmd> lua vim.lsp.buf.hover()<CR>
