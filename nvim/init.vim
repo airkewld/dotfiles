@@ -126,7 +126,6 @@ nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
 nnoremap <leader>wn <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
-" treesitter
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
 
 " DAMN WHITESPACE

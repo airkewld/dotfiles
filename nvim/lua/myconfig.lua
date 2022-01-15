@@ -9,7 +9,26 @@ require("telescope").load_extension('harpoon')
 require("telescope").load_extension('fzf')
 require("telescope").load_extension("git_worktree")
 
-require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+require'nvim-treesitter.configs'.setup {
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    ensure_installed = {
+      "bash",
+      "comment",
+      "dockerfile",
+      "go",
+      "hcl",
+      "json",
+      "lua",
+      "markdown",
+      "regex",
+      "vim",
+      "yaml",
+      "",
+      "",
+    },
+    textobjects = { enable = true }
+}
 
 require'lspconfig'.dockerls.setup{}
 
