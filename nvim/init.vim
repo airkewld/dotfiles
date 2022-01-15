@@ -35,7 +35,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ctrlpvim/ctrlp.vim'
 " Borrowed from Aristides
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -46,6 +46,13 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-utils/vim-man'
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
@@ -67,9 +74,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
 
-"call lua
-require('myconfig')
-
+"color scheme
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "I«Esc>[38;2;%lu;%lu;%lum"
@@ -90,6 +95,7 @@ nnoremap <leader>fbb <cmd>Telescope file_browser hidden=true<cr>
 nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true no_ignore=true<cr>
 nnoremap <leader>lg <cmd>Telescope live_grep<cr>
+nnoremap <leader>bg <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
@@ -120,7 +126,6 @@ nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.creat
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " treesitter
-
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
 
 " DAMN WHITESPACE
@@ -149,3 +154,16 @@ augroup END
 
 " Find files inside dotfiles
 nnoremap <leader>df :lua require('telescope.builtin').find_files({ prompt_title = "< Dotfiles>", cwd = "$HOME/dotfiles.git/main"})<cr>
+
+"call lua config
+lua require('myconfig')
+
+
+" lsp remaps
+nnoremap <silent> K <cmd> lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>r <cmd> lua vim.lsp.buf.rename()<CR>
+
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.yml lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync(nill, 100)
