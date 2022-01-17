@@ -74,6 +74,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
 
+"call lua config
+lua require('myconfig')
+
 "color scheme
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
@@ -154,9 +157,6 @@ augroup END
 
 " Find files inside dotfiles
 nnoremap <leader>df :lua require('telescope.builtin').find_files({ prompt_title = "< Dotfiles>", cwd = "$HOME/dotfiles.git/main"})<cr>
-
-"call lua config
-lua require('myconfig')
 
 " lsp remaps
 nnoremap <silent> K <cmd> lua vim.lsp.buf.hover()<CR>
