@@ -56,7 +56,7 @@ require'lspconfig'.tflint.setup{}
 
 require'lspconfig'.vimls.setup{}
 
-require'lspconfig'.yamlls.setup{}
+require'lspconfig'.yamls.setup{}
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
