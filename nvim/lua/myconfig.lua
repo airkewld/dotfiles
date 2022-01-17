@@ -23,9 +23,7 @@ require'nvim-treesitter.configs'.setup {
       "markdown",
       "regex",
       "vim",
-      "yaml",
-      "",
-      "",
+      "yaml"
     },
     textobjects = { enable = true }
 }
