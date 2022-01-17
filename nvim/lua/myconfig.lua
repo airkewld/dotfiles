@@ -56,7 +56,13 @@ require'lspconfig'.tflint.setup{}
 
 require'lspconfig'.vimls.setup{}
 
-require'lspconfig'.yamlls.setup{}
+require'lspconfig'.yamlls.setup{
+    settings = {
+      yaml =  {
+        schemas = { kubernetes = "globPattern" },
+      }
+    }
+}
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
