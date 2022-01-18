@@ -2,6 +2,10 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- "require for file_browser
 require("telescope").load_extension "file_browser"
 
+-- Needed for formatting
+local lspkind = require('lspkind')
+lspkind.init()
+
 -- "require for comments
 require('Comment').setup()
 
@@ -116,5 +120,20 @@ cmp.setup({
     { name = 'path' },
     { name = 'buffer', keyword_length = 5 },
   },
+  formatting = {
+    format = lspkind.cmp_format {
+      with_text = true,
+      menu = {
+        buffer   = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[API]",
+        path     = "[Path]",
+        luasnip  = "[Snippet]"
+      },
+    },
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
 })
-
