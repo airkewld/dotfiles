@@ -56,6 +56,8 @@ require'lspconfig'.tflint.setup{}
 
 require'lspconfig'.vimls.setup{}
 
+require'lspconfig'.ansiblels.setup{}
+
 require'lspconfig'.yamlls.setup{
     settings = {
       yaml =  {
