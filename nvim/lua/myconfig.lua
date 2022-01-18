@@ -109,20 +109,12 @@ cmp.setup({
       end
     end,
   },
-  formatting = {
-    format = lspkind.cmp_format {
-      with_text = true,
-      menu = {
-        buffer   = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[API]",
-        path     = "[Path]",
-        luasnip  = "[Snippet]"
-      },
-    },
-  },
-  experimental = {
-    native_menu = false,
-    ghost_text = true,
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length = 5 },
   },
 })
+
