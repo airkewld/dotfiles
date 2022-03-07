@@ -25,8 +25,6 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
-source $HOME/.config/nvim/plug-config/coc.vim
-
 """ Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 " color shceme
@@ -37,8 +35,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ctrlpvim/ctrlp.vim'
 " Borrowed from Aristides
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -49,6 +46,14 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-utils/vim-man'
 Plug 'neovim/nvim-lspconfig'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
@@ -70,6 +75,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
 
+"call lua config
+lua require('myconfig')
+
+"color scheme
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "I«Esc>[38;2;%lu;%lu;%lum"
@@ -83,26 +92,16 @@ set background=dark
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-"lua require('nvim_lsp').tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require('lspconfig').tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require('lspconfig').terraformls.setup{}
-
-"require for file_browser
-lua require("telescope").load_extension "file_browser"
-
-"require for comments
-lua require('Comment').setup()
-
 " Telescope remaps
 let mapleader = " "
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fbb <cmd>Telescope file_browser hidden=true<cr>
-nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
+" nnoremap <leader>dso <cmd>Telescope find_files cwd=~/work/devsecops hidden=true no_ignore=true <cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true no_ignore=true<cr>
 nnoremap <leader>lg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>bg <cmd>Telescope current_buffer_fuzzy_find<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-lua require("telescope").load_extension('harpoon')
 nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
 
 " Fugitive
@@ -119,15 +118,16 @@ nnoremap <leader>cb <cmd>:cprevious<cr>
 nnoremap <leader>pli <cmd>:PlugInstall<cr>
 nnoremap <leader>plu <cmd>:PlugUpdate<cr>
 nnoremap <leader>plg <cmd>:PlugUpgrade<cr>
+nnoremap <leader>plc <cmd>:PlugClean<cr>
 
 " Harpoon
 nnoremap <leader>ha <cmd>:lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>hm <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>hn <cmd>:lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>hb <cmd>:lua require("harpoon.ui").nav_prev()<cr>
+
 "require for primagen worktree
-lua require("telescope").load_extension("git_worktree")
-nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+nnoremap <leader>wn <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>wl <cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 nnoremap <leader>rm <cmd>:call delete(expand('%'))<cr>
@@ -158,3 +158,12 @@ augroup END
 
 " Find files inside dotfiles
 nnoremap <leader>df :lua require('telescope.builtin').find_files({ prompt_title = "< Dotfiles>", cwd = "$HOME/dotfiles.git/main"})<cr>
+
+" lsp remaps
+nnoremap <silent> K <cmd> lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>r <cmd> lua vim.lsp.buf.rename()<CR>
+
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.yml lua vim.lsp.buf.formatting_sync(nill, 100)
+autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync(nill, 100)
