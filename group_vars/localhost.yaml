@@ -28,6 +28,7 @@ brew_install:
   - azure-cli
   - bash
   - bash-completion
+  - bash-language-server
   - check
   - checkov
   - cilium-cli
