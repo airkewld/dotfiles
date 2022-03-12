@@ -16,7 +16,7 @@ plugins=(
   terraform
   bundler
   dotenv
-  osx
+  macos
   rake
   rbenv
   ruby
