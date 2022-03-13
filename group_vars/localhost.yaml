@@ -10,7 +10,6 @@ krew_install:
   - grep
   - images
   - kubesec-scan
-  - kvaps/node-shell
   - mtail
   - ns
   - rbac-view
@@ -56,7 +55,7 @@ brew_install:
   - kube-linter
   - kube-ps1
   - rg
-  - yaml-launguage-server
+  - yaml-language-server
   - kubebuilder
   - kubectx
   - kubernetes-cli
