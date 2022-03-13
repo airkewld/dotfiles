@@ -55,6 +55,8 @@ brew_install:
   - krew
   - kube-linter
   - kube-ps1
+  - rg
+  - yaml-launguage-server
   - kubebuilder
   - kubectx
   - kubernetes-cli
