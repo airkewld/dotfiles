@@ -70,6 +70,9 @@ require'lspconfig'.yamlls.setup{
     }
 }
 
+-- Set up gitsigns
+require('gitsigns').setup()
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
