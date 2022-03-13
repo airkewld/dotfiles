@@ -108,6 +108,7 @@ nnoremap <leader>th <cmd>Telescope harpoon marks<cr>
 " Fugitive
 nnoremap <leader>fg <cmd>:G<cr>
 nnoremap <leader>gp <cmd>:Git push<cr>
+nnoremap <leader>gc <cmd>:Git checkout .<cr>
 nnoremap <leader>gpp <cmd>:G pull<cr>
 
 " Quickfix
