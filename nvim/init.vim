@@ -110,6 +110,7 @@ nnoremap <leader>fg <cmd>:G<cr>
 nnoremap <leader>gp <cmd>:Git push<cr>
 nnoremap <leader>gc <cmd>:Git checkout .<cr>
 nnoremap <leader>gpp <cmd>:G pull<cr>
+nnoremap <leader>gf <cmd>:G fetch origin '*:*'<cr>
 
 " Quickfix
 nnoremap <leader>cc <cmd>:cclose<cr>
