@@ -2,8 +2,8 @@
 # tasks file for nvim
 - name: Copy nvim config
   ansible.builtin.copy:
-    src: nvim/init.vim
-    dest: ~/.config/nvim/init.vim
+    src: nvim
+    dest: ~/.config/
     owner: "{{ ansible_user_id }}"
     mode: '0644'
   tags:
