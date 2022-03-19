@@ -10,7 +10,7 @@ local execute = vim.api.nvim_command
 local cmd = vim.cmd
 
 -- Auto install packer.nvim if it doesn't exist
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data')..'~/.config/nvim/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
   print "Installing packer, close and reopen Neovim..."
@@ -24,6 +24,9 @@ cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
+
+
+vim.cmd [[packadd packer.nvim]] -- packadd packer module
 
 -- Install plugins
 require('plugins')
