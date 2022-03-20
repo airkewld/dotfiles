@@ -8,10 +8,3 @@ repos:
     hooks:
       - id: ansible-lint
         entry: ansible-lint -x command-instead-of-shell -x no-changed-when
-  - repo: local
-    hooks:
-      - id: ansible-playbook
-        verbose: true
-        name: ansible-playbook
-        language: script
-        entry: ./pre-commit-playbook.sh
