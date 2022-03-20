@@ -7,4 +7,4 @@ repos:
     rev: 'v5.4.0'
     hooks:
       - id: ansible-lint
-        entry: ansible-lint -x command-instead-of-shell -x no-changed-when
+        entry: ansible-lint -x command-instead-of-shell -x no-changed-when -x git-latest
