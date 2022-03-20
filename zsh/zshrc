@@ -26,7 +26,7 @@ plugins=(
 export ZSH="/Users/__USERNAME__/.oh-my-zsh"
 prompt_context () { }
 
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ZSH_THEME="agnoster"
