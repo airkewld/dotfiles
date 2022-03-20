@@ -1,6 +1,5 @@
 #!/bin/bash
 
-## Install packages needed to build local config
 # Brew
 if ! which brew > /dev/null
 then
