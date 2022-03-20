@@ -1,5 +1,5 @@
 ---
-# tasks file for nvim
+# copy nvim configs
 - name: Copy nvim config
   ansible.builtin.copy:
     src: nvim

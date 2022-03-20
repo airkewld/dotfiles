@@ -4,8 +4,8 @@
   hosts: localhost
 
   roles:
-  - pre_config
-  - oh_my_zsh
+  - homebrew
+  - shell
   - tmux
   - nvim
   - krew
