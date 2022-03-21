@@ -8,7 +8,6 @@
 - and more
 
 
-This is all managed via ansible and you can install it on your machine by running:
-./bootstrap.sh
+This is all managed via ansible and you can install it on your machine by running ```./bootstrap.sh```
 
 
