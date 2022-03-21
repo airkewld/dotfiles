@@ -53,7 +53,7 @@
 - name: Copy shell config
   ansible.builtin.copy:
     src: zsh/zshrc
-    dest: ~/.zhsrc
+    dest: ~/.zshrc
     owner: "{{ ansible_user_id }}"
     mode: '0644'
   tags:
