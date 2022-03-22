@@ -16,7 +16,18 @@ require('telescope').setup {
       override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
-    }
+    },
+   file_browser = {
+      theme = "ivy",
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
   }
 }
 -- To get fzf loaded and working with telescope, you need to call
@@ -45,3 +56,9 @@ vim.api.nvim_set_keymap('n', '<leader>wn', [[<cmd>lua require('telescope').exten
 vim.api.nvim_set_keymap('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser",
+  { noremap = true }
+)

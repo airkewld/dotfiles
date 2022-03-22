@@ -14,6 +14,8 @@ return require('packer').startup(function()
       }
     }
 
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+
     -- harpoon
     use 'ThePrimeagen/harpoon'
     use 'nvim-lua/plenary.nvim'
