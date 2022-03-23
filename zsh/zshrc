@@ -46,6 +46,7 @@ export EDITOR='nvim'
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 alias cls="clear"
 alias k=kubectl
+alias ks=k9s
 
 alias v="nvim ."
 alias vim="nvim"
