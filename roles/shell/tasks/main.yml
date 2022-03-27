@@ -60,6 +60,16 @@
     - shell
     - always
 
+- name: Copy p10k config
+  ansible.builtin.copy:
+    src: zsh/p10k.zsh
+    dest: ~/.p10k.zsh
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - shell
+    - always
+
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'

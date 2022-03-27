@@ -30,6 +30,7 @@ brew_install:
   - bash-language-server
   - check
   - checkov
+  - romkatv/powerlevel10k/powerlevel10k
   - cilium-cli
   - conftest
   - cowsay
