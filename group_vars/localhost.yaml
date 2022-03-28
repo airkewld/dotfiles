@@ -28,9 +28,11 @@ brew_install:
   - bash
   - bash-completion
   - bash-language-server
+  - bitwarden
+  - brave-browser
   - check
+  - checkmarx/tap/kics
   - checkov
-  - romkatv/powerlevel10k/powerlevel10k
   - cilium-cli
   - conftest
   - cowsay
@@ -44,19 +46,17 @@ brew_install:
   - go
   - gobject-introspection
   - golangci-lint
-  - gosec
   - gopls
+  - gosec
   - htop
+  - iterm2
   - jq
   - k9s
-  - checkmarx/tap/kics
   - kind
   - kompose
   - krew
   - kube-linter
   - kube-ps1
-  - rg
-  - yaml-language-server
   - kubebuilder
   - kubectx
   - kubernetes-cli
@@ -70,6 +70,8 @@ brew_install:
   - pre-commit
   - pwgen
   - reattach-to-user-namespace
+  - rg
+  - romkatv/powerlevel10k/powerlevel10k
   - shellcheck
   - step
   - terraform
@@ -85,11 +87,9 @@ brew_install:
   - vim
   - watch
   - wget
+  - yaml-language-server
   - yubico-piv-tool
   - zsh
   - zsh-autosuggestions
-  - iterm2
-  - brave-browser
-  - bitwarden
 
 brew_uninstall: []
