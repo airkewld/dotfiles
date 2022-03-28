@@ -90,5 +90,6 @@ brew_install:
   - zsh-autosuggestions
   - iterm2
   - brave-browser
+  - bitwarden
 
 brew_uninstall: []
