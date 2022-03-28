@@ -88,5 +88,7 @@ brew_install:
   - yubico-piv-tool
   - zsh
   - zsh-autosuggestions
+  - iterm2
+  - brave-browser
 
 brew_uninstall: []
