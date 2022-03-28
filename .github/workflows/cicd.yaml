@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   ansible_lint:
     # The type of runner that the job will run on
-    runs-on: ansible/ansible
+    runs-on: alpine
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,11 +25,14 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: ansible lint
-        run: ansible-lint .
+        run: |
+             apk update
+             apk add ansible
+             ansible-lint .
 
   shellcheck:
     # The type of runner that the job will run on
-    runs-on: koalaman/shellcheck-alpine
+    runs-on: alpine
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,4 +41,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: shellcheck
-        run: shellcheck .
+        run: |
+             apk update
+             apk add shellcheck
+             shellcheck .
