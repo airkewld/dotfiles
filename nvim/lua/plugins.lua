@@ -1,4 +1,4 @@
-return require('packer').startup(function()
+return require('packer').startup({function()
 
     -- Packer can manage itself as an optional plugin
     use 'wbthomason/packer.nvim'
@@ -89,4 +89,11 @@ return require('packer').startup(function()
 
     -- Logstash syntax support
     use 'robbles/logstash.vim'
-end)
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
