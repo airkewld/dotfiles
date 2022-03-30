@@ -1,0 +1,14 @@
+# Create base dir env
+- name: Create base dirs
+  ansible.builtin.file:
+    path: ~/{{ item }}
+    state: directory
+    mode: '0755'
+  with_items:
+    - dev
+    - temp
+    - study
+    - work
+  tags:
+    - base_dirs
+    - always
