@@ -10,8 +10,11 @@ jobs:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
       - uses: actions/checkout@v2
 
-      - name: Lint Ansible Playbook
-        uses: ansible-community/ansible-lint-action@main
+      - name: Install ansible
+        run: apt-get update && apt-get install -qy ansible
 
-      - name: ls
-        args: ls
+      - name: List dir files
+        run: ls
+
+      - name: Run ansible lint
+        run: ansible-lint .
