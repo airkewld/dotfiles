@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install ansible
-        run: apt-get update && apt-get install -qy ansible
+        run: sudo apt-get update && sudo apt-get install -qy ansible
 
       - name: List dir files
         run: ls
