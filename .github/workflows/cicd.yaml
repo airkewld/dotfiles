@@ -10,11 +10,8 @@ jobs:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
       - uses: actions/checkout@v2
 
-      - name: Install ansible
-        run: sudo apt-get update && sudo apt-get install -qy ansible
-
       - name: List dir files
         run: ls
 
       - name: Run ansible lint
-        run: ansible-lint .
+        uses: cytopia/ansible-lint
