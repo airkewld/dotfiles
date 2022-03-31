@@ -14,4 +14,4 @@ jobs:
         run: ls
 
       - name: Run ansible lint
-        uses: cytopia/ansible-lint
+        uses: cytopia/ansible-lint@latest
