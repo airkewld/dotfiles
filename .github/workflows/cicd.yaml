@@ -3,7 +3,7 @@ name: Linters
 on: [push, pull_request]
 
 jobs:
-  lint:
+  ansible-lint:
     runs-on: ubuntu-latest
     container:
       image: cytopia/ansible-lint
@@ -16,4 +16,15 @@ jobs:
         run: ls
 
       - name: Run ansible lint
-        run: ansible-lint
+        run: ansible-lint -x command-instead-of-shell -x no-changed-when -x git-latest
+shellcheck:
+    runs-on: ubuntu-latest
+    container:
+      image: koalaman/shellcheck
+
+    steps:
+      # Important: This sets up your GITHUB_WORKSPACE environment variable
+      - uses: actions/checkout@v2
+
+      - name: Run shellcheck
+        run: shellcheck *.sh
