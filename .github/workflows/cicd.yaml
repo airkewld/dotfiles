@@ -5,6 +5,8 @@ on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
+    container:
+      image: cytopia/ansible-lint@latest
 
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
@@ -14,5 +16,4 @@ jobs:
         run: ls
 
       - name: Run ansible lint
-        container:
-          image: cytopia/ansible-lint@latest
+        run: ansible-lint .
