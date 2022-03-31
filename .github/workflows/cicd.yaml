@@ -12,3 +12,7 @@ jobs:
 
       - name: Lint Ansible Playbook
         uses: ansible-community/ansible-lint-action@main
+
+      - name: ls
+        uses: docker
+        aegs: ls
