@@ -16,4 +16,4 @@ jobs:
         run: ls
 
       - name: Run ansible lint
-        run: ansible-lint .
+        run: ansible-lint
