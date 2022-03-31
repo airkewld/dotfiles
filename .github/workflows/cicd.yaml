@@ -12,12 +12,10 @@ jobs:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
       - uses: actions/checkout@v2
 
-      - name: List dir files
-        run: ls
-
       - name: Run ansible lint
         run: ansible-lint -x command-instead-of-shell -x no-changed-when -x git-latest
-shellcheck:
+
+  shellcheck:
     runs-on: ubuntu-latest
     container:
       image: koalaman/shellcheck
