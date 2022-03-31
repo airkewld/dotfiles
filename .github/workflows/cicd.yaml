@@ -14,5 +14,4 @@ jobs:
         uses: ansible-community/ansible-lint-action@main
 
       - name: ls
-        uses: docker/docker
         args: ls
