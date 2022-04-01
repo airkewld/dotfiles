@@ -73,6 +73,7 @@ brew_install:
   - rg
   - romkatv/powerlevel10k/powerlevel10k
   - shellcheck
+  - spectable
   - step
   - terraform
   - terraform-docs
