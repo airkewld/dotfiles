@@ -152,7 +152,3 @@ config = function ()
 
   vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end
-
-
--- remaps
-vim.api.nvim_set_keymap('n', '<leader>nt', [[<cmd>:NeoTreeFloat<CR>]], { noremap = true, silent = true })
