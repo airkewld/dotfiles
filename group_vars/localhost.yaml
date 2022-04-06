@@ -24,6 +24,7 @@ krew_uninstall: []
 
 brew_install:
   - ansible-lint
+  - awscli
   - azure-cli
   - bash
   - bash-completion
@@ -74,7 +75,7 @@ brew_install:
   - rg
   - romkatv/powerlevel10k/powerlevel10k
   - shellcheck
-  - spectable
+  - spectacle
   - step
   - terraform
   - terraform-docs
