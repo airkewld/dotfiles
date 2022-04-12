@@ -90,6 +90,9 @@ return require('packer').startup({function()
     -- Logstash syntax support
     use 'robbles/logstash.vim'
 
+    -- floaterm
+    use 'voldikss/vim-floaterm'
+
 end,
 config = {
   display = {

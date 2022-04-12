@@ -32,7 +32,7 @@ fi
 # npm install -g dockerfile-language-server-nodejs vim-language-server
 
 ## Run playbook
-ansible-playbook config.yaml --diff
+ansible-playbook config.yaml --diff --ask-vault-pass
 
 # pre-commit
 pre-commit install
