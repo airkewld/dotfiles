@@ -63,6 +63,7 @@ brew_install:
   - kubectx
   - kubernetes-cli
   - kustomize
+  - lazygit
   - lolcat
   - lua
   - lua-language-server
