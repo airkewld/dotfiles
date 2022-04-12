@@ -35,6 +35,7 @@ return require('packer').startup({function()
 
     -- Fugitive for Git
     use 'tpope/vim-fugitive'
+    use 'kdheepak/lazygit.nvim'
     -- Add git related info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' }
