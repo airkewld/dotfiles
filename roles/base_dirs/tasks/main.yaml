@@ -1,7 +1,7 @@
 # Create base dir env
 - name: Create base dirs
   ansible.builtin.file:
-    path: ~/{{ item }}
+    path: ~/Documents/{{ item }}
     state: directory
     mode: '0755'
   with_items:

@@ -20,6 +20,7 @@
 # install fonts
 - name: install powerline fonts
   ansible.builtin.shell: /tmp/fonts/install.sh
+  when: not powerline_fonts.stat.exists
   tags:
     - shell
     - always
