@@ -12,14 +12,18 @@
   tags:
     - base_dirs
     - always
+  when: ansible_nodename == "oscars-mbp.lan"
 
-- name: Create config dirs
+- name: Create work dirs
   ansible.builtin.file:
     path: ~/{{ item }}
     state: directory
     mode: '0755'
   with_items:
     - .config
+    - dev
+    - temp
+    - work
   tags:
     - base_dirs
     - always
