@@ -105,7 +105,7 @@
     path: ~/.zshrc
     regexp: '###KUBE_PS1_SOURCE###'
     insertafter: '###KUBE_PS1_SOURCE###'
-    line: source "/opt/homebrew/share/kube-ps1.sh"
+    line: source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
   when: ansible_nodename == "oscars-mbp.lan"
   tags:
     - shell
