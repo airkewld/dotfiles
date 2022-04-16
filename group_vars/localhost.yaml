@@ -2,35 +2,24 @@
 # defaults file for pre-config
 krew_install:
   - access-matrix
-  - advise-psp
-  - change-ns
   - df-pv
-  - flame
   - get-all
-  - grep
   - images
-  - kubesec-scan
   - mtail
   - ns
-  - rbac-view
   - resource-capacity
-  - resource-snapshot
-  - tail
-  - topology
   - tree
-  - unused-volumes
 
 krew_uninstall: []
 
 brew_install:
   - ansible-lint
   - awscli
-  - azure-cli
   - bash
   - bash-completion
   - bash-language-server
-  - bitwarden
-  - brave-browser
+  # - bitwarden
+  # - brave-browser
   - check
   - checkmarx/tap/kics
   - checkov
@@ -51,7 +40,7 @@ brew_install:
   - gopls
   - gosec
   - htop
-  - iterm2
+  # - iterm2
   - jq
   - k9s
   - kind
@@ -76,8 +65,8 @@ brew_install:
   - rg
   - romkatv/powerlevel10k/powerlevel10k
   - shellcheck
-  - signal
-  - spectacle
+  # - signal
+  # - spectacle
   - step
   - terraform
   - terraform-docs
@@ -97,4 +86,5 @@ brew_install:
   - zsh
   - zsh-autosuggestions
 
-brew_uninstall: []
+brew_uninstall:
+  - azure-cli

@@ -12,3 +12,14 @@
   tags:
     - base_dirs
     - always
+
+- name: Create config dirs
+  ansible.builtin.file:
+    path: ~/{{ item }}
+    state: directory
+    mode: '0755'
+  with_items:
+    - .config
+  tags:
+    - base_dirs
+    - always
