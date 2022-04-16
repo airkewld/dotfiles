@@ -88,3 +88,47 @@
   tags:
     - shell
     - always
+
+- name: Add correct kube-ps1 source (work)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    regexp: '###KUBE_PS1_SOURCE###'
+    insertafter: '###KUBE_PS1_SOURCE###'
+    line: source "/opt/homebrew/share/kube-ps1.sh"
+  when: ansible_nodename != "oscars-mbp.lan"
+  tags:
+    - shell
+    - always
+
+- name: Add correct kube-ps1 source (personal)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    regexp: '###KUBE_PS1_SOURCE###'
+    insertafter: '###KUBE_PS1_SOURCE###'
+    line: source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+  when: ansible_nodename == "oscars-mbp.lan"
+  tags:
+    - shell
+    - always
+
+- name: Add correct p10k source (work)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    regexp: '###P10K_SOURCE###'
+    insertafter: '###P10K_SOURCE###'
+    line: source /opt/homebrew/Cellar/powerlevel10k/1.16.1/powerlevel10k.zsh-theme
+  when: ansible_nodename != "oscars-mbp.lan"
+  tags:
+    - shell
+    - always
+
+- name: Add correct p10k source (personal)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    regexp: '###P10K_SOURCE###'
+    insertafter: '###P10K_SOURCE###'
+    line: source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+  when: ansible_nodename == "oscars-mbp.lan"
+  tags:
+    - shell
+    - always

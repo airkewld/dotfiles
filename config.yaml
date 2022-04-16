@@ -5,8 +5,8 @@
 
   roles:
   - homebrew
-  - shell
   - base_dirs
+  - shell
   - tmux
   - nvim
   - krew
