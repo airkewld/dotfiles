@@ -12,7 +12,7 @@
   ansible.builtin.git:
     repo: 'https://github.com/powerline/fonts.git'
     dest: /tmp/fonts
-  # when: not powerline_fonts.stat.exists
+  when: not powerline_fonts.stat.exists
   tags:
     - shell
     - always
@@ -20,7 +20,7 @@
 # install fonts
 - name: install powerline fonts
   ansible.builtin.shell: /tmp/fonts/install.sh
-  # when: not powerline_fonts.stat.exists
+  when: not powerline_fonts.stat.exists
   tags:
     - shell
     - always
@@ -39,14 +39,14 @@
     url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
     dest: /tmp/install-oh-my-zsh.sh
     mode: 0755
-  # when: not oh_my_stats.stat.exists
+  when: not oh_my_stats.stat.exists
   tags:
     - shell
     - always
 
 - name: Install oh-my-zsh
   command: zsh /tmp/install-oh-my-zsh.sh
-  # when: not oh_my_stats.stat.exists
+  when: not oh_my_stats.stat.exists
   tags:
     - shell
     - always
