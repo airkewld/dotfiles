@@ -74,11 +74,6 @@ KUBE_PS1_SEPARATOR=''
 KUBE_PS1_SUFFIX=' - '
 KUBE_PS1_PREFIX=''
 
-alias cck='kubeon; kubectl config use-context DEV1'
-alias cek='kubeon; kubectl config use-context PROD1'
-alias mek='kubeon; kubectl config use-context MON_PROD1'
-alias ldk='kubeon; kubectl config use-context LOCAL_KIND_CLUSTER'
-alias kgv="kubectl get constraint -o name -A -o=custom-columns='NAME:.metadata.name,ACTION:.spec.enforcementAction,POLICY:.spec.parameters,VIOLATIONS:.status.totalViolations'"
 alias kns='kubens'
 
 # terraform fun
@@ -88,9 +83,7 @@ alias tfd='terraform destroy -auto-approve'
 alias tfi='terraform init'
 
 # work dirs
-alias work='cd ~/work'
-alias dso='cd ~/work/dso'
-alias armed='cd ~/work/v2'
+alias work='cd ~/Documents/work'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
