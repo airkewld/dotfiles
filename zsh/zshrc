@@ -67,7 +67,7 @@ alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
 
 
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+###KUBE_PS1_SOURCE###
 PS1='$(kube_ps1)'$PS1
 KUBE_PS1_SYMBOL_DEFAULT=''
 KUBE_PS1_SEPARATOR=''
@@ -106,7 +106,8 @@ alias tm="~/.config/tmux.sh"
 
 
 export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+###P10K_SOURCE###
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
