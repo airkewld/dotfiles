@@ -68,7 +68,7 @@ brew_install:
   # - signal
   # - spectacle
   - step
-  - terraform
+  - tfenv
   - terraform-docs
   - terraform-ls
   - terraformer
