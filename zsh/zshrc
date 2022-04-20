@@ -105,3 +105,10 @@ export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+
+### work
+alias kstg='AWS_PROFILE=stg kubectl config set-context eks_stg'
+alias kprd='AWS_PROFILE=prod kubectl config set-context eks_prod'
+
