@@ -109,6 +109,6 @@ export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
 
 
 ### work
-alias kstg='AWS_PROFILE=stg kubectl config set-context eks_stg'
-alias kprd='AWS_PROFILE=prod kubectl config set-context eks_prod'
+alias kstg='export AWS_PROFILE=stg && kubectl config set-context eks_stg'
+alias kprd='export AWS_PROFILE=prod && kubectl config set-context eks_prod'
 
