@@ -84,7 +84,10 @@ alias tfd='terraform destroy -auto-approve'
 alias tfi='terraform init'
 
 # work dirs
-alias work='cd ~/Documents/work'
+alias work='cd ~/work'
+
+# cloud directories
+alias cld='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
