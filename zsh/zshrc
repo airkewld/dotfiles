@@ -82,6 +82,7 @@ alias tfp='terraform plan -out plan'
 alias tfa='terraform apply plan'
 alias tfd='terraform destroy -auto-approve'
 alias tfi='terraform init'
+alias tfc='docker run -it --rm -v $(pwd):/tmp -v ~/.aws:/root/.aws --entrypoint sh terraform'
 
 # work dirs
 alias work='cd ~/work'
