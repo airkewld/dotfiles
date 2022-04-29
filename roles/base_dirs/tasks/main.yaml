@@ -12,7 +12,6 @@
   tags:
     - base_dirs
     - always
-  when: ansible_nodename == "oscars-mbp.lan"
 
 - name: Create work dirs
   ansible.builtin.file:
@@ -28,3 +27,4 @@
   tags:
     - base_dirs
     - always
+  when: ansible_architecture == "arm64"
