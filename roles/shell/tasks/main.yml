@@ -95,7 +95,7 @@
     regexp: '###KUBE_PS1_SOURCE###'
     insertafter: '###KUBE_PS1_SOURCE###'
     line: source "/opt/homebrew/share/kube-ps1.sh"
-  when: ansible_nodename != "oscars-mbp.lan"
+  when: ansible_architecture == "arm64"
   tags:
     - shell
     - always
@@ -106,7 +106,7 @@
     regexp: '###KUBE_PS1_SOURCE###'
     insertafter: '###KUBE_PS1_SOURCE###'
     line: source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-  when: ansible_nodename == "oscars-mbp.lan"
+  when: ansible_architecture == "x86_64"
   tags:
     - shell
     - always
@@ -117,7 +117,7 @@
     regexp: '###P10K_SOURCE###'
     insertafter: '###P10K_SOURCE###'
     line: source /opt/homebrew/Cellar/powerlevel10k/1.16.1/powerlevel10k.zsh-theme
-  when: ansible_nodename != "oscars-mbp.lan"
+  when: ansible_architecture == "arm64"
   tags:
     - shell
     - always
@@ -128,7 +128,7 @@
     regexp: '###P10K_SOURCE###'
     insertafter: '###P10K_SOURCE###'
     line: source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-  when: ansible_nodename == "oscars-mbp.lan"
+  when: ansible_architecture == "x86_64"
   tags:
     - shell
     - always
