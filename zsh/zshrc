@@ -22,7 +22,6 @@ plugins=(
   kubectl
   terraform
   bundler
-  replicated-gcommands
   dotenv
   rake
   rbenv
