@@ -94,6 +94,10 @@ return require('packer').startup({function()
     -- floaterm
     use 'voldikss/vim-floaterm'
 
+
+    -- gh copilot
+    use 'github/copilot.vim'
+
 end,
 config = {
   display = {
