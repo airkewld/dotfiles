@@ -34,7 +34,6 @@ prompt_context () { }
 
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
 ZSH_THEME="agnoster"
 
 CASE_SENSITIVE="true"
@@ -81,7 +80,7 @@ alias tfp='terraform plan -out plan'
 alias tfa='terraform apply plan'
 alias tfd='terraform destroy -auto-approve'
 alias tfi='terraform init'
-alias tfc='docker run -it --rm -v $(pwd):/tmp -v ~/.aws:/root/.aws --entrypoint sh terraform'
+alias tfc='docker run -it --rm -m 2048m --cpus=2 -v $(pwd):/tmp -v ~/.aws:/root/.aws --entrypoint sh terraform'
 
 # work dirs
 alias work='cd ~/work'
