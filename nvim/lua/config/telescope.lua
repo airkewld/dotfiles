@@ -57,6 +57,10 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], { noremap = true, silent = true })
 -- telescope file browser
 vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]], { noremap = true, silent = true })
+-- quickfix commands
+vim.api.nvim_set_keymap('n', '<leader>cn', [[<cmd>:cn <CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cp', [[<cmd>:cp <CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cc', [[<cmd>:cclose <CR>]], { noremap = true, silent = true })
 
 -- file_browser docs
 
