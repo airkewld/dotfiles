@@ -22,7 +22,6 @@ plugins=(
   kubectl
   terraform
   bundler
-  replicated-gcommands
   dotenv
   rake
   rbenv
@@ -34,7 +33,6 @@ export ZSH="$HOME/.oh-my-zsh"
 prompt_context () { }
 
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 ZSH_THEME="agnoster"
 
@@ -82,7 +80,7 @@ alias tfp='terraform plan -out plan'
 alias tfa='terraform apply plan'
 alias tfd='terraform destroy -auto-approve'
 alias tfi='terraform init'
-alias tfc='docker run -it --rm -v $(pwd):/tmp -v ~/.aws:/root/.aws --entrypoint sh terraform'
+alias tfc='docker run -it --rm -m 2048m --cpus=2 -v $(pwd):/tmp -v ~/.aws:/root/.aws --entrypoint sh terraform'
 
 # work dirs
 alias work='cd ~/work'
