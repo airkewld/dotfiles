@@ -34,6 +34,7 @@ return require('packer').startup({function()
     use 'ThePrimeagen/git-worktree.nvim'
 
     -- Fugitive for Git
+    use 'tpope/vim-fugitive'
     use 'kdheepak/lazygit.nvim'
     -- Add git related info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim',
