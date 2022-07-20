@@ -34,7 +34,6 @@ return require('packer').startup({function()
     use 'ThePrimeagen/git-worktree.nvim'
 
     -- Fugitive for Git
-    use 'tpope/vim-fugitive'
     use 'kdheepak/lazygit.nvim'
     -- Add git related info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim',
@@ -45,7 +44,11 @@ return require('packer').startup({function()
     use 'tpope/vim-surround'
 
     -- Status line
-    use 'itchyny/lightline.vim'
+    -- use 'itchyny/lightline.vim'
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- Some help
     use 'vim-utils/vim-man'
