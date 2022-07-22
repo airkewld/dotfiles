@@ -136,10 +136,6 @@ ins_left {
   color = { fg = colors.magenta, gui = 'bold' },
 }
 
-ins_left { 'location' }
-
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
-
 ins_left {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
@@ -164,7 +160,7 @@ ins_right {
   'filetype',
   fmt = string.upper,
   icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
+  color = { fg = colors.green },
 }
 
 ins_right {
@@ -187,6 +183,10 @@ ins_right {
   icon = ' LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
 }
+
+ins_right { 'location' }
+
+ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)
