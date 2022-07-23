@@ -1,4 +1,11 @@
 ---
+- name: Install latest available neovim version
+  community.general.homebrew:
+    name: "neovim"
+    state: present
+  tags:
+    - always
+
 # install homebrew packages
 - name: Install brew package(s)
   community.general.homebrew:
