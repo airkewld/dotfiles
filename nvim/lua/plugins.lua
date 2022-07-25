@@ -42,7 +42,7 @@ return require('packer').startup({function()
     }
 
     -- Vim surround
-    use 'tpope/vim-surround'
+    -- use 'tpope/vim-surround'
 
     -- Status line
     -- use 'itchyny/lightline.vim'
@@ -80,27 +80,27 @@ return require('packer').startup({function()
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     -- Snippets and integration with k8s
-    use 'andrewstuart/vim-kubernetes'
+    -- use 'andrewstuart/vim-kubernetes'
 
     -- Show me indentantion marks
     use 'Yggdroot/indentLine'
 
     -- ALE (Asynchronous Lint Engine)
-    use 'dense-analysis/ale'
+    -- use 'dense-analysis/ale'
 
     -- Rego syntax support
-    use 'tsandall/vim-rego'
-    use 'sbdchd/neoformat'
+    -- use 'tsandall/vim-rego'
+    -- use 'sbdchd/neoformat'
 
     -- Logstash syntax support
-    use 'robbles/logstash.vim'
+    -- use 'robbles/logstash.vim'
 
     -- floaterm
     use 'voldikss/vim-floaterm'
 
 
     -- gh copilot
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 
 end,
 config = {

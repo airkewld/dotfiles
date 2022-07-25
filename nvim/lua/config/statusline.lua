@@ -1,1 +1,1 @@
-require('config.evil_theme')
+require('config.bubbles_theme')
