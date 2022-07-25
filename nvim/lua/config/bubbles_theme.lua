@@ -41,10 +41,11 @@ require('lualine').setup {
     lualine_a = {
       { 'mode', separator = { left = '' }, right_padding = 2 },
     },
-    lualine_b = { 'branch', 'diff', 'filetype', 'filename' },
+    lualine_b = { 'branch', 'diff', 'filename' },
     lualine_c = { 'diagnostics' },
     lualine_x = {},
     lualine_y = {
+      'filetype',
       'progress',
     },
     lualine_z = {
