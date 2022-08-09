@@ -83,7 +83,7 @@ return require('packer').startup({function()
     -- use 'andrewstuart/vim-kubernetes'
 
     -- Show me indentantion marks
-    use 'Yggdroot/indentLine'
+    -- use 'Yggdroot/indentLine'
 
     -- ALE (Asynchronous Lint Engine)
     -- use 'dense-analysis/ale'
