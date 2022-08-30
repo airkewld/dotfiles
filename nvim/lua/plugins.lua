@@ -102,6 +102,9 @@ return require('packer').startup({function()
     -- gh copilot
     -- use 'github/copilot.vim'
 
+    -- git-blame
+    use 'f-person/git-blame.nvim'
+
 end,
 config = {
   display = {
