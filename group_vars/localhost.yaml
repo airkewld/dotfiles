@@ -78,6 +78,7 @@ brew_install:
   - tree
   - tree-sitter
   - trivy
+  - viddy
   - vim
   - watch
   - wget
