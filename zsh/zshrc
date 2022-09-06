@@ -11,9 +11,6 @@ autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
 
-#linkerd
-export PATH=$PATH:$HOME/.linkerd2/bin
-
 # Path to your oh-my-zsh installation.
 plugins=(
   git
@@ -45,9 +42,6 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 alias cls="clear"
 alias k=kubectl
@@ -55,6 +49,8 @@ alias ks=k9s
 
 alias v="nvim ."
 alias vim="nvim"
+
+alias watch="viddy"
 
 
 alias cp='cp -iv'                           # Preferred 'cp' implementation
