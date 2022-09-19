@@ -69,7 +69,7 @@ KUBE_PS1_SEPARATOR=''
 KUBE_PS1_SUFFIX=' - '
 KUBE_PS1_PREFIX=''
 
-alias kns='kubens'
+alias kns='kubie'
 
 # terraform fun
 alias tfp='terraform plan -out plan'
