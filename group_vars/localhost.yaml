@@ -50,7 +50,7 @@ brew_install:
   - kube-ps1
   - kubebuilder
   - kubectx
-  - kubbie
+  - kubens
   - kubernetes-cli
   - kustomize
   - lazygit
