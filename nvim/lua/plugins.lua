@@ -98,9 +98,18 @@ return require('packer').startup({function()
     -- floaterm
     use 'voldikss/vim-floaterm'
 
-
-    -- gh copilot
-    -- use 'github/copilot.vim'
+    use { "anuvyklack/windows.nvim",
+       requires = {
+          "anuvyklack/middleclass",
+          "anuvyklack/animation.nvim"
+      },
+       config = function()
+          vim.o.winwidth = 10
+          vim.o.winminwidth = 10
+          vim.o.equalalways = false
+          require('windows').setup()
+       end
+    }
 
     -- git-blame
     use 'f-person/git-blame.nvim'
