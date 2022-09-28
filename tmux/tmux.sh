@@ -6,11 +6,11 @@ else
     selected=$(find ~ ~/work/dso ~/work/armed -maxdepth 2 -mindepth 1 -type d | fzf)
 fi
 
-tmux has-session -t "DSO" 2> /dev/null || TMUX='' tmux new-session -d -c "$selected" -s "DSO"
+tmux has-session -t "🧔🏻‍♂️" 2> /dev/null || TMUX='' tmux new-session -d -c "$selected" -s "🧔🏻‍♂️"
 
 if [[ -z "$TMUX" ]];
 then
-tmux attach-session -d -t DSO
+tmux attach-session -d -t 🧔🏻‍♂️
 else
 tmux new-window -c "$selected"
 fi
