@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~ ~/work/dso ~/work/armed -maxdepth 2 -mindepth 1 -type d | fzf)
+    selected=$(find ~ -maxdepth 2 -mindepth 1 -type d | fzf)
 fi
 
 tmux has-session -t "🧔🏻‍♂️" 2> /dev/null || TMUX='' tmux new-session -d -c "$selected" -s "🧔🏻‍♂️"
