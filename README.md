@@ -10,4 +10,6 @@
 
 This is all managed via ansible and you can install it on your machine by running ```./bootstrap.sh```
 
-
+Once your machine is bootstrapped, do the following:
+- Import the iterm2 profile
+- run p10k configure to install the fonts
