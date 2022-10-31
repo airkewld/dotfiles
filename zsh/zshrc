@@ -105,7 +105,7 @@ export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # lazigit
-export XDG_CONFIG_HOME="$HOME/.lazygitconfig"
+export XDG_CONFIG_HOME="$HOME/dotfiles/main/lazygit/.config
 
 
 # work
