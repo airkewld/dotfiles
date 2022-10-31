@@ -89,8 +89,8 @@ return require('packer').startup({function()
     -- use 'dense-analysis/ale'
 
     -- Rego syntax support
-    -- use 'tsandall/vim-rego'
-    -- use 'sbdchd/neoformat'
+    use 'tsandall/vim-rego'
+    use 'sbdchd/neoformat'
 
     -- Logstash syntax support
     -- use 'robbles/logstash.vim'
