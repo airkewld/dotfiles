@@ -1,0 +1,18 @@
+- name: Create lazygit directory if it does not exist
+  ansible.builtin.file:
+    path: ~/Library/Application Support/jesseduffield/lazygit/
+    state: directory
+    mode: '0744'
+  tags:
+    - shell
+    - always
+
+- name: Copy lazygit config
+  ansible.builtin.copy:
+    src: lazygit/config.yml
+    dest: ~/Library/Application Support/jesseduffield/lazygit/config.yml
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - shell
+    - always
