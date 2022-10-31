@@ -33,3 +33,7 @@ require('plugins')
 
 -- Plugin customizations
 require('config')
+
+-- vimwiki
+vim.g.vimwiki_list = {{path = '~/Documents/Mywiki', syntax = 'markdown', ext = '.md'}}
+

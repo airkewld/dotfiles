@@ -35,3 +35,5 @@ utils.opt('b', 'softtabstop', indent)
 utils.opt('b', 'shiftwidth', indent)                  -- the number of spaces inserted for each indentation
 utils.opt('b', 'fileencoding', 'utf-8')               -- the encoding written to a file
 utils.opt('w', 'foldenable', false)                   -- show all text unfolded
+utils.opt('o', 'clipboard', 'unnamed')
+
