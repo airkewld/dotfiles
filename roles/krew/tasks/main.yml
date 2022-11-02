@@ -5,9 +5,13 @@
   with_items: "{{ krew_install }}"
   tags:
     - krew
+  async: 300
+  poll: 0
 
 - name: Remove kubectl krew plugin(s)
   shell: kubectl krew uninstall "{{ item }}"
   with_items: "{{ krew_uninstall }}"
   tags:
     - krew
+  async: 300
+  poll: 0

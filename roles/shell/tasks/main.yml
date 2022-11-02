@@ -89,7 +89,7 @@
     - shell
     - always
 
-- name: Add correct kube-ps1 source (work)
+- name: Add correct kube-ps1 source (apple silicon)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '###KUBE_PS1_SOURCE###'
@@ -100,7 +100,7 @@
     - shell
     - always
 
-- name: Add correct kube-ps1 source (personal)
+- name: Add correct kube-ps1 source (interl chip)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '###KUBE_PS1_SOURCE###'
@@ -111,7 +111,7 @@
     - shell
     - always
 
-- name: Add correct p10k source (work)
+- name: Add correct p10k source (apple silicon)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '###P10K_SOURCE###'
@@ -122,7 +122,7 @@
     - shell
     - always
 
-- name: Add correct p10k source (personal)
+- name: Add correct p10k source (intel chip)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '###P10K_SOURCE###'

@@ -1,11 +1,20 @@
 ---
 # copy nvim configs
-- name: Copy nvim config
-  ansible.builtin.copy:
+# copy module very slow when src contains multiple files
+# - name: Copy nvim config
+#   ansible.builtin.copy:
+#     src: nvim
+#     dest: ~/.config/
+#     owner: "{{ ansible_user_id }}"
+#     mode: '0644'
+#   tags:
+#     - nvim
+#     - always
+
+- name: copy nvim config
+  ansible.posix.synchronize:
     src: nvim
     dest: ~/.config/
-    owner: "{{ ansible_user_id }}"
-    mode: '0644'
   tags:
     - nvim
     - always

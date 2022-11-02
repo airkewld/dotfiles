@@ -10,14 +10,14 @@ else
 fi
 
 # Neovim
-# if ! which nvim > /dev/null
-# then
-#   echo "Installing neovim..."
-#   brew install neovim
-#   brew link neovim
-# else
-#   echo "neovim already installed."
-# fi
+if ! which nvim > /dev/null
+then
+  echo "Installing neovim..."
+  brew install neovim
+  brew link neovim
+else
+  echo "neovim already installed."
+fi
 
 # ansible
 if ! which ansible > /dev/null
@@ -29,7 +29,7 @@ else
 fi
 
 
-# npm install -g dockerfile-language-server-nodejs vim-language-server
+npm install -g dockerfile-language-server-nodejs vim-language-server
 
 ## Run playbook
 ansible-playbook config.yaml --diff
