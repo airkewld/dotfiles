@@ -5,6 +5,8 @@
     state: present
   tags:
     - always
+  async: 300
+  poll: 0
 
 # install homebrew packages
 - name: Install brew package(s)
@@ -15,6 +17,8 @@
   ignore_errors: true
   tags:
     - brew
+  async: 300
+  poll: 0
 
 - name: Remove brew package(s)
   community.general.homebrew:
@@ -23,3 +27,5 @@
   with_items: "{{ brew_uninstall }}"
   tags:
     - brew
+  async: 300
+  poll: 0
