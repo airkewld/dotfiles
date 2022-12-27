@@ -1,9 +1,5 @@
--- Bear in mind that the Lua API is still fairly beta,
--- and many Vim things don’t have direct interfaces.
-
--- Map leader key to space
-vim.g.mapleader = ' '
-
+require("airkewld")
+--
 -- Some local variables for better readability
 local fn = vim.fn
 local execute = vim.api.nvim_command
@@ -21,19 +17,12 @@ end
 cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]])
-
-
-vim.cmd [[packadd packer.nvim]] -- packadd packer module
-
--- Install plugins
-require('plugins')
-
--- Plugin customizations
-require('config')
-
--- vimwiki
-vim.g.vimwiki_list = {{path = '~/Documents/Mywiki', syntax = 'markdown', ext = '.md'}}
-
+cmd[[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=180})
+augroup END
+]]

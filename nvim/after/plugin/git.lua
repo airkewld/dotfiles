@@ -4,11 +4,10 @@ vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>:G pull<CR>]], { noremap = tru
 vim.api.nvim_set_keymap('n', '<leader>gco', [[<cmd>:G checkout .<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gfe', [[<cmd>:G fetch origin '*:*'<CR>]], { noremap = true, silent = true })
 
-local utils = require('config.utils')
-utils.map('n', '<Leader>gs', '<cmd>G<CR>')
-utils.map('n', '<Leader>ga', '<cmd>Git fetch --all<CR>')
-utils.map('n', '<Leader>grum', '<cmd>Git rebase upstream/master<CR>')
-utils.map('n', '<Leader>grom', '<cmd>Git rebase origin/master<CR>')
+vim.keymap.set('n', '<Leader>gs', '<cmd>G<CR>')
+vim.keymap.set('n', '<Leader>ga', '<cmd>Git fetch --all<CR>')
+vim.keymap.set('n', '<Leader>grum', '<cmd>Git rebase upstream/master<CR>')
+vim.keymap.set('n', '<Leader>grom', '<cmd>Git rebase origin/master<CR>')
 
 -- Gitsigns
 require('gitsigns').setup {
@@ -20,4 +19,3 @@ require('gitsigns').setup {
     changedelete = { hl = 'GitGutterChange', text = '~' },
   },
 }
-
