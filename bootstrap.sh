@@ -9,6 +9,8 @@ else
   echo "homebrew already installed."
 fi
 
+brew install npm > /dev/null
+
 # Neovim
 if ! which nvim > /dev/null
 then
