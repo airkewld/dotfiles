@@ -1,0 +1,21 @@
+-- local cmp = require ("cp")
+-- require ("luasnip. Loaders. from_vscode"). lazy_load )
+-- cmp. setup ({
+--     mapping = cmp.mapping.preset. insert ({
+--         ('20-bs 1 = cmp. mapping. scroll_docs (-4) ,
+--         ['<C-f>'] = cmp .mapping.scroll_docs (4) ,
+--         ['<C-o>'] = cmp. mapping. complete ),
+--         ['<C-e>'] = cmp .mapping.abort),
+--         ['<CR>'] = cmp.mapping. confirm({ select = true }) ,
+--     }),
+--     snippet = {
+--         expand = function (args)
+--             require ('luasnip').Usp_expand(args…body)
+--         end,
+--     },
+--     SoUrces = cmp.config.sources({
+--         { name = 'nvim_lsp' },
+--         { name = 'luasnip'
+--         J, t
+--         § name = 'buffer },
+--     }),
