@@ -106,6 +106,15 @@ return require('packer').startup({function(use)
           require('neoscroll').setup()
       end
     }
+
+   -- auto complete
+   use 'hrsh7th/nvim-cmp'
+   use 'hrsh7th/cmp-nvim-lsp'
+   -- use 'L3MON4D3/cmp_luasnip'
+   use 'saadparwaiz1/cmp_luasnip'
+   use 'rafamadriz/friendly-snippets'
+
+
 end,
 config = {
   display = {
