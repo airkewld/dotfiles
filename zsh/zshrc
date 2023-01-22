@@ -113,4 +113,3 @@ export GITLAB_BASE_URL=https://gitlab.rebellion.dev/api/v4/
 export GPG_TTY=$(tty)
 
 export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
-
