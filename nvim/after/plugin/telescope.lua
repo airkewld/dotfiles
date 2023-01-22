@@ -1,28 +1,28 @@
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-  extensions = {
-   file_browser = {
-      theme = "ivy",
-      hijack_netrw = false,
-      mappings = {
-        ["i"] = {
-          -- your custom insert mode mappings
+    defaults = {
+        mappings = {
+            i = {
+                ['<C-u>'] = false,
+                ['<C-d>'] = false,
+            },
         },
-        ["n"] = {
-          -- your custom normal mode mappings
-        },
-      },
     },
-  }
+    extensions = {
+        file_browser = {
+            theme = "ivy",
+            hijack_netrw = false,
+            mappings = {
+                ["i"] = {
+                    -- your custom insert mode mappings
+                },
+                ["n"] = {
+                    -- your custom normal mode mappings
+                },
+            },
+        },
+    }
 }
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
@@ -34,18 +34,30 @@ require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("file_browser")
 
 --Add leader shortcuts
-vim.keymap.set('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>df', [[<cmd>lua require('telescope.builtin').find_files({prompt_title = "<Dotfiles>", cwd = "~/dotfiles"})<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>bf', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>lg', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gwl', [[<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gwn', [[<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>df',
+    [[<cmd>lua require('telescope.builtin').find_files({prompt_title = "<Dotfiles>", cwd = "~/dotfiles"})<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bf', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lg', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gwl', [[<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gwn', [[<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]],
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
+    { noremap = true, silent = true })
 -- telescope file browser
-vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
+    { noremap = true, silent = true })
 -- quickfix commands
 vim.keymap.set('n', '<leader>cn', [[<cmd>:cn <CR>]], { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', [[<cmd>:cp <CR>]], { noremap = true, silent = true })

@@ -11,11 +11,11 @@ vim.keymap.set('n', '<Leader>grom', '<cmd>Git rebase origin/master<CR>')
 
 -- Gitsigns
 require('gitsigns').setup {
-  signs = {
-    add = { hl = 'GitGutterAdd', text = '+' },
-    change = { hl = 'GitGutterChange', text = '~' },
-    delete = { hl = 'GitGutterDelete', text = '_' },
-    topdelete = { hl = 'GitGutterDelete', text = '‾' },
-    changedelete = { hl = 'GitGutterChange', text = '~' },
-  },
+    signs = {
+        add = { hl = 'GitGutterAdd', text = '+' },
+        change = { hl = 'GitGutterChange', text = '~' },
+        delete = { hl = 'GitGutterDelete', text = '_' },
+        topdelete = { hl = 'GitGutterDelete', text = '‾' },
+        changedelete = { hl = 'GitGutterChange', text = '~' },
+    },
 }
