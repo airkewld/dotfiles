@@ -104,12 +104,14 @@ export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# work
-export GOPATH=$HOME/Go
-export GOROOT=/usr/local/opt/go/libexec
+# go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+# Homebrew
+export GOROOT="$(brew --prefix golang)/libexec"
+# Manual install
+# export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export GITLAB_BASE_URL=https://gitlab.rebellion.dev/api/v4/
-export GPG_TTY=$(tty)
 
 export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
