@@ -1,0 +1,64 @@
+---
+- name: Create window-manager dirs
+  ansible.builtin.file:
+    path: ~/.config/{{ item }}
+    state: directory
+    mode: '0755'
+  with_items:
+    - yabai
+    - skhd
+  tags:
+    - window-manager
+    - always
+
+- name: Copy yabai config
+  ansible.builtin.copy:
+    src: window-manager/yabai/yabairc
+    dest: ~/.config/yabai/yabairc
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - window-manager
+    - always
+
+- name: Start yabai
+  shell: brew services start yabai
+  tags:
+    - window-manager
+    - always
+  async: 300
+  poll: 0
+
+- name: ReStart yabai
+  shell: brew services restart yabai
+  tags:
+    - window-manager
+    - always
+  async: 300
+  poll: 0
+
+- name: Copy skhdrc config
+  ansible.builtin.copy:
+    src: window-manager/skhd/skhdrc
+    dest: ~/.config/skhd/skhdrc
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - window-manager
+    - always
+
+- name: Start skhd
+  shell: brew services start skhd
+  tags:
+    - window-manager
+    - always
+  async: 300
+  poll: 0
+
+- name: ReStart skhd
+  shell: brew services restart skhd
+  tags:
+    - window-manager
+    - always
+  async: 300
+  poll: 0

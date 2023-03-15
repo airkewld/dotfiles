@@ -26,3 +26,4 @@ autocmd!
 au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=180})
 augroup END
 ]]
+vim.g.vimwiki_list = { { path = '~/vimwiki', syntax = 'markdown', ext = '.md' } }
