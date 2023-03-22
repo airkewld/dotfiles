@@ -86,9 +86,9 @@ brew_install:
   - yubico-piv-tool
   - zsh
   - zsh-autosuggestions
-  - koekeishiya/formulae/yabai
-  - koekeishiya/formulae/skhd
   - romkatv/powerlevel10k/powerlevel10k
 
 brew_uninstall:
   - azure-cli
+  - koekeishiya/formulae/yabai
+  - koekeishiya/formulae/skhd
