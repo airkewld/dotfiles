@@ -122,6 +122,9 @@ return require('packer').startup({ function(use)
     -- Use tabnine
     use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
+    -- Use auto-pairs
+    use 'jiangmiao/auto-pairs'
+
 end,
     config = {
         display = {
