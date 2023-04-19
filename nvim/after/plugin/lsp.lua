@@ -1,6 +1,9 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 lsp.ensure_installed({
     "gopls",
     "yamlls",
@@ -11,6 +14,7 @@ lsp.ensure_installed({
 
 -- Fix Undefined global 'vim'
 lsp.configure('lua_ls', {
+    capabilities = capabilities,
     settings = {
         Lua = {
             diagnostics = {
@@ -77,8 +81,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end)
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lsp.setup()
 
