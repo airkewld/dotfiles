@@ -128,13 +128,6 @@ return require('packer').startup({
         -- Use auto-pairs
         use 'jiangmiao/auto-pairs'
 
-        -- nvim term
-        use {
-            "NvChad/nvterm",
-            config = function()
-                require("nvterm").setup()
-            end,
-        }
         -- nvim tree
         use {
             'nvim-tree/nvim-tree.lua',
