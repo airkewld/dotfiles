@@ -13,3 +13,5 @@ This is all managed via ansible and you can install it on your machine by runnin
 Once your machine is bootstrapped, do the following:
 - Import the iterm2 profile
 - run p10k configure to install the fonts
+- vim nvim/lua/airkewld/packer.lua
+  - save file, wait for all packages to install, close and reopen neovim
