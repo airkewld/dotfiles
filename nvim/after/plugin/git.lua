@@ -8,7 +8,8 @@ vim.keymap.set('n', '<Leader>gs', '<cmd>G<CR>')
 vim.keymap.set('n', '<Leader>ga', '<cmd>Git fetch --all<CR>')
 vim.keymap.set('n', '<Leader>grum', '<cmd>Git rebase upstream/master<CR>')
 vim.keymap.set('n', '<Leader>grom', '<cmd>Git rebase origin/master<CR>')
-
+-- lazygit
+vim.keymap.set('n', '<leader>gg', [[<cmd>:LazyGit <CR>]], { noremap = true, silent = true })
 -- Gitsigns
 require('gitsigns').setup {
     signs = {

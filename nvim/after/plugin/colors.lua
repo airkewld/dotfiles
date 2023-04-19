@@ -1,2 +1,2 @@
-local color = "gruvbox"
+local color = "catppuccin"
 vim.cmd.colorscheme(color)
