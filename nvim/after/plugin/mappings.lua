@@ -19,3 +19,6 @@ vim.keymap.set('n', '<leader>j', '<cmd>wincmd j<CR>')
 vim.keymap.set('n', '<leader>k', '<cmd>wincmd k<CR>')
 vim.keymap.set('n', '<leader>l', '<cmd>wincmd l<CR>')
 vim.keymap.set('n', '<leader>pv', '<cmd>wincmd v<bar> :Ex <bar> :vertical resize 30<CR>')
+
+-- quick saves
+vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>:w<CR>]], { noremap = true, silent = true })
