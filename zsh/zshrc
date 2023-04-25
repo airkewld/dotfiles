@@ -115,3 +115,5 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
+
+export FAV_SE="google"
