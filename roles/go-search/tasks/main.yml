@@ -1,0 +1,21 @@
+- name: Clone go-search
+  ansible.builtin.git:
+    repo: 'https://github.com/airkewld/go-search.git'
+    dest: ~/dev/go_search
+    force: true
+  tags:
+    - go-search
+    - always
+
+
+- name: Build go-search binary
+  shell: |
+    cd ~/dev/go_search
+    go fmt .
+    gosec .
+    golangci-lint run
+    go build go-search.go
+    cp go-search /opt/homebrew/bin/go-search
+  tags:
+    - go-search
+    - always
