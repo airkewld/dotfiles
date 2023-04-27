@@ -128,6 +128,9 @@ return require('packer').startup({
         -- Use auto-pairs
         use 'jiangmiao/auto-pairs'
 
+        -- copilot
+        use 'github/copilot.vim'
+
         -- nvim tree
         use {
             'nvim-tree/nvim-tree.lua',
