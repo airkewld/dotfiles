@@ -20,11 +20,32 @@
   tags:
     - brew
 
+- name: Install brew cask package(s)
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    upgrade_all: true
+    update_homebrew: true
+  with_items: "{{ brew_cask_install }}"
+  ignore_errors: false
+  tags:
+    - brew
+
 - name: Remove brew package(s)
   community.general.homebrew:
     name: "{{ item }}"
     state: absent
   with_items: "{{ brew_uninstall }}"
+  tags:
+    - brew
+  async: 300
+  poll: 0
+
+- name: Remove brew cask package(s)
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ brew_cask_uninstall }}"
   tags:
     - brew
   async: 300
