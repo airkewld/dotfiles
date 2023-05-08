@@ -12,6 +12,12 @@ krew_install:
 
 krew_uninstall: []
 
+brew_cask_install:
+  - rectangle
+  - iterm2
+
+brew_cask_uninstall: []
+
 brew_install:
   - ansible-lint
   - awscli
@@ -40,7 +46,6 @@ brew_install:
   - gopls
   - gosec
   - htop
-  # - iterm2
   - jq
   - k9s
   - kind
@@ -86,7 +91,7 @@ brew_install:
   - zsh
   - zsh-autosuggestions
   - romkatv/powerlevel10k/powerlevel10k
-  - rectangle
+  - go
 
 brew_uninstall:
   - azure-cli
