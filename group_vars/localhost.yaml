@@ -15,6 +15,7 @@ krew_uninstall: []
 brew_cask_install:
   - rectangle
   - iterm2
+  - brave-browser
 
 brew_cask_uninstall: []
 
@@ -25,7 +26,6 @@ brew_install:
   - bash-completion
   - bash-language-server
   # - bitwarden
-  # - brave-browser
   - check
   - checkmarx/tap/kics
   - checkov
