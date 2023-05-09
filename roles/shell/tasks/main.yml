@@ -116,7 +116,7 @@
     path: ~/.zshrc
     regexp: '###P10K_SOURCE###'
     insertafter: '###P10K_SOURCE###'
-    line: source /opt/homebrew/Cellar/powerlevel10k/1.17.0/powerlevel10k.zsh-theme
+    line: source /opt/homebrew/Cellar/powerlevel10k/1.18.0/powerlevel10k.zsh-theme
   when: ansible_architecture == "arm64"
   tags:
     - shell
