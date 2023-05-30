@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+-- vim.opt.autochdir = true
+
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true

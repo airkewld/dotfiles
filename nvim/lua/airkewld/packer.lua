@@ -132,15 +132,17 @@ return require('packer').startup({
         use 'github/copilot.vim'
 
         -- nvim tree
-        use {
-            'nvim-tree/nvim-tree.lua',
-            requires = {
-                'nvim-tree/nvim-web-devicons', -- optional
-            },
-            config = function()
-                require("nvim-tree").setup {}
-            end
-        }
+        -- use {
+        --     'nvim-tree/nvim-tree.lua',
+        --     requires = {
+        --         'nvim-tree/nvim-web-devicons', -- optional
+        --     },
+        --     config = function()
+        --         require("nvim-tree").setup {}
+        --     end
+        -- }
+        -- add rooter
+        use 'airblade/vim-rooter'
     end,
     config = {
         display = {
