@@ -17,7 +17,7 @@ brew_cask_install:
   - iterm2
   - brave-browser
 
-brew_cask_uninstall: []
+brew_cask_uninstall:
 
 brew_install:
   - ansible-lint
@@ -32,9 +32,10 @@ brew_install:
   - cilium-cli
   - conftest
   - cowsay
+  - colima
+  - docker
   - direnv
   - dive
-  - docker
   - exercism
   - fzf
   - gawk

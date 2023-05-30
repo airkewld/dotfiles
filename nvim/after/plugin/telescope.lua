@@ -1,5 +1,9 @@
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
+--
+--
+local fb_actions = require "telescope._extensions.file_browser.actions"
+
 require('telescope').setup {
     defaults = {
         mappings = {
@@ -12,10 +16,14 @@ require('telescope').setup {
     extensions = {
         file_browser = {
             theme = "ivy",
-            hijack_netrw = false,
+            hijack_netrw = true,
+            depth = 3,
+            collapse_dirs = true,
+            hidden = { file_browser = true, folder_browser = true },
             mappings = {
                 ["i"] = {
                     -- your custom insert mode mappings
+                    ["<C-n>"] = fb_actions.create,
                 },
                 ["n"] = {
                     -- your custom normal mode mappings
@@ -56,8 +64,8 @@ vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_co
 vim.keymap.set('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
     { noremap = true, silent = true })
 -- telescope file browser
--- vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
---     { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
+    { noremap = true, silent = true })
 -- quickfix commands
 vim.keymap.set('n', '<leader>cn', [[<cmd>:cn <CR>]], { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', [[<cmd>:cp <CR>]], { noremap = true, silent = true })
