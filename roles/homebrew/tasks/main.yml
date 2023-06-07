@@ -12,8 +12,8 @@
 - name: Install brew package(s)
   community.general.homebrew:
     name: "{{ item }}"
-    state: present
-    upgrade_all: true
+    state: latest
+    upgrade_all: false
     update_homebrew: true
   with_items: "{{ brew_install }}"
   ignore_errors: false
