@@ -5,7 +5,6 @@
     force: true
   tags:
     - go-search
-    - always
 
 
 - name: Build go-search binary
@@ -15,4 +14,3 @@
     cp ./build/darwin/go-search /opt/homebrew/bin/go-search
   tags:
     - go-search
-    - always
