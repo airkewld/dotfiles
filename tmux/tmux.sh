@@ -3,10 +3,10 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    if [[ $(pwd) = ~/work ]]; then
+    if [[ $(pwd) != ~ ]]; then
       selected=$(find ~/work ~/dev ~/dotfiles -maxdepth 4 -mindepth 1 -type d | fzf)
     else
-      selected=$(find ~ -maxdepth 1 -mindepth 1 -type d | fzf)
+      selected=$(find ~ -maxdepth 2 -mindepth 1 -type d | fzf)
     fi
 fi
 
