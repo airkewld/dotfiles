@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 -- vim.opt.autochdir = true
 
 vim.opt.guicursor = ""
+vim.opt.textwidth = 0
+vim.opt.colorcolumn = "80"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
