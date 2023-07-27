@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup({
     function(use)
-       -- Packer can manage itself
+        -- Packer can manage itself
         use 'wbthomason/packer.nvim'
 
         -- Telescope the moon
