@@ -6,6 +6,17 @@ local fb_actions = require "telescope._extensions.file_browser.actions"
 
 require('telescope').setup {
     defaults = {
+        prompt_prefix = "🔍 ",
+        vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+        },
         mappings = {
             i = {
                 ['<C-u>'] = false,
@@ -44,7 +55,9 @@ require("telescope").load_extension("file_browser")
 --Add leader shortcuts
 vim.keymap.set('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
     { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
+vim.keymap.set('n', '<leader>ff',
+    [[<cmd>lua require('telescope.builtin').find_files({find_command = {"rg", "--ignore", "--hidden", "--files"}})<CR>]],
+    -- [[<cmd>lua require('telescope.builtin').find_files({find_command="rg","--ignore","--hidden","--files",prompt_prefix="🔍"})<CR>]],
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>df',
     [[<cmd>lua require('telescope.builtin').find_files({prompt_title = "<Dotfiles>", cwd = "~/dotfiles"})<CR>]],
