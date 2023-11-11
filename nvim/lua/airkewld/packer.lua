@@ -38,7 +38,7 @@ return require('packer').startup({
         use 'ThePrimeagen/git-worktree.nvim'
 
         -- Git
-        use 'tpope/vim-fugitive'
+        -- use 'tpope/vim-fugitive'
         use 'kdheepak/lazygit.nvim'
         -- Add git related info in the signs columns and popups
         use { 'lewis6991/gitsigns.nvim',
@@ -114,7 +114,7 @@ return require('packer').startup({
         use 'andrewstuart/vim-kubernetes'
 
         -- Show me indentantion marks
-        use 'Yggdroot/indentLine'
+        -- use 'Yggdroot/indentLine'
 
         -- ALE (Asynchronous Lint Engine)
         use 'dense-analysis/ale'
