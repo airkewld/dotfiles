@@ -69,7 +69,7 @@ brew_install:
   - pwgen
   - reattach-to-user-namespace
   - rg
-  - romkatv/powerlevel10k/powerlevel10k
+  - powerlevel10k
   - shellcheck
   # - signal
   - step
