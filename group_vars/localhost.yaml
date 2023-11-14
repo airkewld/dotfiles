@@ -1,4 +1,7 @@
 ---
+## nvim config
+nvim_config_path: nvim/testing/
+
 # defaults file for pre-config
 krew_install:
   - access-matrix
