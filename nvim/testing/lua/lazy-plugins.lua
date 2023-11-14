@@ -23,6 +23,14 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -195,7 +203,21 @@ require('lazy').setup({
       "anuvyklack/middleclass",
       "anuvyklack/animation.nvim"
     },
+    config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require('windows').setup()
+    end
   },
+
+  -- smooth scroll
+  { 'karb94/neoscroll.nvim',
+            config = function()
+                require('neoscroll').setup()
+            end
+  },
+
 
   -- git-blame
   'f-person/git-blame.nvim',
