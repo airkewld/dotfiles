@@ -38,21 +38,24 @@ return require('packer').startup({
         use 'ThePrimeagen/git-worktree.nvim'
 
         -- Git
-        -- use 'tpope/vim-fugitive'
+        use 'tpope/vim-fugitive'
         use 'kdheepak/lazygit.nvim'
         -- Add git related info in the signs columns and popups
         use { 'lewis6991/gitsigns.nvim',
             requires = { 'nvim-lua/plenary.nvim' }
         }
         -- Status line
-        -- use 'itchyny/lightline.vim'
+        use 'itchyny/lightline.vim'
         use {
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
 
         -- Treesitter
-        use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run = ':TSUpdate'
+        }
 
         -- LSP
         use {
@@ -114,7 +117,7 @@ return require('packer').startup({
         use 'andrewstuart/vim-kubernetes'
 
         -- Show me indentantion marks
-        -- use 'Yggdroot/indentLine'
+        use 'Yggdroot/indentLine'
 
         -- ALE (Asynchronous Lint Engine)
         use 'dense-analysis/ale'
@@ -132,7 +135,7 @@ return require('packer').startup({
         -- copilot
         use 'github/copilot.vim'
 
-        -- nvim tree
+        nvim tree
         use {
             'nvim-tree/nvim-tree.lua',
             requires = {

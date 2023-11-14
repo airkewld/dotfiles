@@ -13,8 +13,8 @@
 
 - name: copy nvim config
   ansible.posix.synchronize:
-    src: nvim
-    dest: ~/.config/
+    src: "{{ nvim_config_path }}"
+    dest: ~/.config/nvim/
     delete: true
     recursive: true
   tags:
