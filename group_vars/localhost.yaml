@@ -1,6 +1,6 @@
 ---
 ## nvim config
-nvim_config_path: nvim/testing/
+nvim_config_path: nvim/current/
 
 # defaults file for pre-config
 krew_install:

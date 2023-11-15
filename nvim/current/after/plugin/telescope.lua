@@ -70,8 +70,8 @@ vim.keymap.set('n', '<leader>gwl', [[<cmd>lua require('telescope').extensions.gi
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gwn', [[<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
     { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]],
-    { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]],
+--     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]],
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
