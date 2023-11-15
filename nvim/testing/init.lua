@@ -43,6 +43,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.vimwiki_list = { { path = '~/vimwiki', syntax = 'markdown', ext = '.md' } }
+vim.g.vimwiki_global_ext = 0
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 require('lazy-bootstrap')
@@ -72,7 +74,6 @@ require('lsp-setup')
 -- (completion)
 require('cmp-setup')
 
-vim.g.vimwiki_list = { { path = '~/vimwiki', syntax = 'markdown', ext = '.md' } }
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
