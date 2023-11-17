@@ -1,6 +1,6 @@
 ---
 # tasks file for tmux
-- name: Tmux TMP
+- name: Tmux Package Manager
   ansible.builtin.git:
     repo: 'https://github.com/tmux-plugins/tpm'
     dest: ~/.tmux/plugins/tpm
