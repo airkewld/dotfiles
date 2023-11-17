@@ -29,6 +29,7 @@ brew_install:
   - bash-completion
   - bash-language-server
   # - bitwarden
+  - crane
   - check
   - checkmarx/tap/kics
   - checkov
