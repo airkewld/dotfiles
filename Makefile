@@ -42,6 +42,7 @@ npm-packages:
 
 # Run playbook
 bootstrap-playbook:
+	git pull
 	ansible-playbook config.yaml --diff
 
 # Install pre-commit hooks
@@ -50,4 +51,5 @@ pre-commit:
 
 # Updates
 update:
+	git pull
 	ansible-playbook config.yaml --diff -t always
