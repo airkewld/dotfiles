@@ -62,6 +62,7 @@ brew_install:
   - kubectx
   - kubernetes-cli
   - kustomize
+  - kubent
   - lazygit
   - lolcat
   - lua
