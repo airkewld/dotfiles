@@ -19,10 +19,10 @@
     - tmux
     - always
 
-- name: Copy tmux script
+- name: Copy tmux scripts
   ansible.builtin.copy:
-    src: tmux/tmux.sh
-    dest: ~/.config/tmux.sh
+    src: tmux/scripts/
+    dest: ~/.config/
     owner: "{{ ansible_user_id }}"
     mode: '0744'
   tags:
