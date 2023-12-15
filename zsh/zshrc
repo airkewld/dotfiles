@@ -94,7 +94,8 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 eval "$(direnv hook zsh)"
 
 ## tmuxs
-alias tm="~/.config/tmux.sh"
+alias tm="~/.config/new-windows.sh"
+alias ts="~/.config/new-session.sh"
 
 
 export KICS_QUERIES_PATH=/usr/local/opt/kics/share/kics/assets/queries
