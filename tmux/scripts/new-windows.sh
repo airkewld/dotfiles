@@ -17,5 +17,5 @@ if [[ -z "$TMUX" ]];
 then
   tmux attach-session -d -t 🧔🏻‍♂️
 else
-  tmux new-window -c "$selected"
+  tmux new-window -c "$selected" '/opt/homebrew/bin/nvim .'
 fi
