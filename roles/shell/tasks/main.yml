@@ -112,12 +112,22 @@
     - shell
     - always
 
+- name: Get p10k source
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k'
+    dest: "~/.powerlevel10k"
+    force: true
+  tags:
+    - shell
+    - always
+
 - name: Add correct p10k source (apple silicon)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '###P10K_SOURCE###'
     insertafter: '###P10K_SOURCE###'
-    line: source /opt/homebrew/Cellar/powerlevel10k/1.20.0/powerlevel10k.zsh-theme
+    # line: source /opt/homebrew/Cellar/powerlevel10k/1.20.0/powerlevel10k.zsh-theme
+    line: source ~/.powerlevel10k/powerlevel10k.zsh-theme
   when: ansible_architecture == "arm64"
   tags:
     - shell
@@ -128,7 +138,8 @@
     path: ~/.zshrc
     regexp: '###P10K_SOURCE###'
     insertafter: '###P10K_SOURCE###'
-    line: source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+    # line: source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+    line: source ~/.powerlevel10k/powerlevel10k.zsh-theme
   when: ansible_architecture == "x86_64"
   tags:
     - shell
