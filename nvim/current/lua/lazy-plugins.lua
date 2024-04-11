@@ -204,18 +204,19 @@ require('lazy').setup({
       "anuvyklack/animation.nvim"
     },
     config = function()
-        vim.o.winwidth = 10
-        vim.o.winminwidth = 10
-        vim.o.equalalways = false
-        require('windows').setup()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
     end
   },
 
   -- smooth scroll
-  { 'karb94/neoscroll.nvim',
-            config = function()
-                require('neoscroll').setup()
-            end
+  {
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup()
+    end
   },
 
 
@@ -246,7 +247,10 @@ require('lazy').setup({
   },
 
   -- add rooter
-  'airblade/vim-rooter',
+  -- 'airblade/vim-rooter',
+
+
+  'nvim-neotest/nvim-nio',
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
