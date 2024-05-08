@@ -71,6 +71,7 @@ vim.opt.updatetime = 50
 vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
 vim.opt.foldenable = false
+vim.opt.conceallevel = 1
 
 
 

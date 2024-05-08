@@ -43,7 +43,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.vimwiki_list = { { path = '~/vimwiki', syntax = 'markdown', ext = '.md' } }
+vim.g.vimwiki_list = { { path = '~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Notes/Work', syntax = 'markdown', ext = '.md' } }
 vim.g.vimwiki_global_ext = 0
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -61,7 +61,8 @@ require('keymaps')
 -- [[ Configure Telescope ]]
 -- (fuzzy finder)
 require('telescope-setup')
-vim.cmd([[autocmd VimEnter * lua require('telescope.builtin').find_files({find_command = {"rg", "--ignore", "--hidden", "--files"}})]])
+vim.cmd(
+  [[autocmd VimEnter * lua require('telescope.builtin').find_files({find_command = {"rg", "--ignore", "--hidden", "--files"}})]])
 
 -- [[ Configure Treesitter ]]
 -- (syntax parser for highlighting)
