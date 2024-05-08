@@ -51,5 +51,5 @@ pre-commit:
 
 # Updates
 update:
-	git pull
+	# git pull
 	ansible-playbook config.yaml --diff -t always
