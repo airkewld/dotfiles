@@ -16,12 +16,12 @@ vim.keymap.set('n', '<Leader>gco', '<cmd>GitBlameOpenCommitURL<CR>')
 -- lazygit
 vim.keymap.set('n', '<leader>gg', [[<cmd>:LazyGit <CR>]], { noremap = true, silent = true })
 -- Gitsigns
-require('gitsigns').setup {
-    signs = {
-        add = { hl = 'GitGutterAdd', text = '+' },
-        change = { hl = 'GitGutterChange', text = '~' },
-        delete = { hl = 'GitGutterDelete', text = '_' },
-        topdelete = { hl = 'GitGutterDelete', text = '‾' },
-        changedelete = { hl = 'GitGutterChange', text = '~' },
-    },
-}
+-- require('gitsigns').setup {
+--     signs = {
+--         add = { hl = 'GitGutterAdd', text = '+' },
+--         change = { hl = 'GitGutterChange', text = '~' },
+--         delete = { hl = 'GitGutterDelete', text = '_' },
+--         topdelete = { hl = 'GitGutterDelete', text = '‾' },
+--         changedelete = { hl = 'GitGutterChange', text = '~' },
+--     },
+-- }
