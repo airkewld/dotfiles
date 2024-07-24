@@ -7,6 +7,8 @@ SHELL := /bin/bash
 # Default target
 all: brew neovim ansible npm-packages bootstrap-playbook pre-commit
 
+update: ansible changes
+
 # Install Homebrew
 brew:
 	@if ! which brew > /dev/null; then \
@@ -31,7 +33,9 @@ neovim:
 ansible:
 	@if ! which ansible > /dev/null; then \
 		echo "installing ansible..."; \
-		pip3 install ansible; \
+		python3 -m venv ansible-env;\
+		source ansible-env/bin/activate;\
+		pip install ansible;\
 	else \
 		echo "ansible already installed."; \
 	fi
@@ -43,6 +47,7 @@ npm-packages:
 # Run playbook
 bootstrap-playbook:
 	git pull
+	source ansible-env/bin/activate;\
 	ansible-playbook config.yaml --diff
 
 # Install pre-commit hooks
@@ -50,6 +55,7 @@ pre-commit:
 	pre-commit install
 
 # Updates
-update:
+changes:
 	# git pull
+	source ansible-env/bin/activate;\
 	ansible-playbook config.yaml --diff -t always
