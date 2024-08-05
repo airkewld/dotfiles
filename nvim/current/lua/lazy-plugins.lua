@@ -193,8 +193,24 @@ require('lazy').setup({
     dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
   },
 
-  -- floaterm
+  -- terminals
   'voldikss/vim-floaterm',
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function()
+      require("toggleterm").setup {
+        size = 20,
+        open_mapping = [[<c-\>]],
+        direction = 'horizontal',
+        close_on_exit = true,
+        shell = vim.o.shell
+      }
+
+      -- Keybinding to switch windows directly from terminal mode
+      vim.api.nvim_set_keymap('t', '<C-w>w', [[<C-\><C-n><C-w>w]], { noremap = true, silent = true })
+    end
+  },
 
   -- window animation
   {
