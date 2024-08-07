@@ -22,4 +22,4 @@ vim.keymap.set('n', '<leader>pv', '<cmd>wincmd v<bar> :Ex <bar> :vertical resize
 
 -- quick saves
 vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>:w<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-g>', [[<cmd>:FloatermNew --name=tmux /opt/homebrew/bin/go-search<CR>]],{ noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-g>', [[<cmd>:FloatermNew --name=tmux /opt/homebrew/bin/go-search<CR>]],{ noremap = true, silent = true })
