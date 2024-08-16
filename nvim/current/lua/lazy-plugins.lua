@@ -345,6 +345,29 @@ require('lazy').setup({
     },
   },
 
+  -- AI
+  {
+    "robitx/gp.nvim",
+    config = function()
+      local conf = {
+        -- For customization, refer to Install > Configuration in the Documentation/Readme
+
+        providers = {
+          openai = {
+            disable = true,
+          },
+          copilot = {
+            disable = false,
+          },
+
+        }
+      }
+      require("gp").setup(conf)
+      -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
+    end,
+  },
+
+  -- END PLUGINS
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.

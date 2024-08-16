@@ -16,3 +16,8 @@ vim.api.nvim_set_keymap('n', '<leader>ts',
 -- floaterm
 vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>:ToggleTerm direction=horizontal size=10<CR>]],
     { noremap = true, silent = true })
+
+-- dotfiles
+vim.api.nvim_set_keymap('n', '<leader>dm',
+    [[<cmd>:FloatermNew --name=tmux --title=update_dotfiles ~/.config/dotfiles-update.sh<CR>]],
+    { noremap = true, silent = true })
