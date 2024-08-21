@@ -208,7 +208,7 @@ require('lazy').setup({
       }
 
       -- Keybinding to switch windows directly from terminal mode
-      vim.api.nvim_set_keymap('t', '<C-w>w', [[<C-\><C-n><C-w>w]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('t', '<C-o>', [[<C-\><C-n><C-w>w]], { noremap = true, silent = true })
     end
   },
 
