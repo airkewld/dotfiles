@@ -351,13 +351,20 @@ require('lazy').setup({
     config = function()
       local conf = {
         -- For customization, refer to Install > Configuration in the Documentation/Readme
+        openai_api_key = os.getenv("OPENAI_API_KEY"),
 
         providers = {
           openai = {
-            disable = true,
+            disable = false,
           },
           copilot = {
-            disable = false,
+            disable = true,
+            endpoint = "https://api.githubcopilot.com/chat/completions",
+            secret = {
+              "bash",
+              "-c",
+              "cat ~/.config/github-copilot/apps.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+            },
           },
 
         }
