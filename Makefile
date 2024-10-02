@@ -59,4 +59,3 @@ changes:
 	# git pull
 	source ansible-env/bin/activate;\
 	ansible-playbook config.yaml --diff -t always
-	rm -rf ansible-env
