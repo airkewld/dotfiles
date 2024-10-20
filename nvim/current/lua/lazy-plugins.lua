@@ -355,10 +355,10 @@ require('lazy').setup({
 
         providers = {
           openai = {
-            disable = false,
+            disable = true,
           },
           copilot = {
-            disable = true,
+            disable = false,
             endpoint = "https://api.githubcopilot.com/chat/completions",
             secret = {
               "bash",
