@@ -12,4 +12,5 @@
   - nvim
   - krew
   - go-search
+  - colima
   # - window-manager
