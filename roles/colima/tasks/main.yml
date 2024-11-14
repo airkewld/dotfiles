@@ -1,0 +1,21 @@
+---
+# tasks file for colima
+- name: Start colima
+  ansible.builtin.shell: colima start --arch aarch64 --vm-type=vz --vz-rosetta -m 2 -c 1
+  tags:
+    - colima
+    - always
+
+- name: Colima status
+  ansible.builtin.shell: colima status
+  register: colima_status
+  tags:
+    - colima
+    - always
+
+- name: Colima state
+  debug:
+    var: colima_status.stderr
+  tags:
+    - colima
+    - always
