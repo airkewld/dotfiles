@@ -52,6 +52,7 @@ alias vim="nvim"
 
 alias watch="viddy"
 
+alias zz="caffeinate -d"
 
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
