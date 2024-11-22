@@ -1,8 +1,6 @@
 ---
 - name: Install latest available neovim version
-  community.general.homebrew:
-    name: "neovim"
-    state: present
+  ansible.builtin.shell: brew install neovim && brew reinstall neovim
   tags:
     - always
   async: 300
@@ -10,11 +8,7 @@
 
 # install homebrew packages
 - name: Install brew package(s)
-  community.general.homebrew:
-    name: "{{ item }}"
-    state: latest
-    upgrade_all: false
-    update_homebrew: true
+  ansible.builtin.shell: brew install {{ item }}
   with_items: "{{ brew_install }}"
   ignore_errors: false
   tags:
