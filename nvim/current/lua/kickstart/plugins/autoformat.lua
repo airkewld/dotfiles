@@ -6,6 +6,8 @@
 return {
   'neovim/nvim-lspconfig',
   config = function()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    require('lspconfig').lua_ls.setup { capabilities = capabilities }
     -- Switch for controlling whether you want autoformatting.
     --  Use :KickstartFormatToggle to toggle autoformatting on or off
     local format_is_enabled = true

@@ -31,6 +31,7 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lua',
       'L3MON4D3/LuaSnip',
       'rafamadriz/friendly-snippets',
+      'saghen/blink.cmp',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -372,6 +373,25 @@ require('lazy').setup({
       require("gp").setup(conf)
       -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
     end,
+  },
+
+
+  -- autocomplete
+  {
+    'saghen/blink.cmp',
+    dependencies = 'rafamadriz/friendly-snippets',
+
+    version = 'v0.*',
+    opts = {
+      keymap = { preset = 'default' },
+
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono'
+      },
+
+      signature = { enabled = true }
+    },
   },
 
   -- END PLUGINS
