@@ -54,6 +54,12 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+
+      -- Add this for buffer completion
+      'hrsh7th/cmp-buffer',
+
+      -- Add this for path completion
+      'hrsh7th/cmp-path',
     },
   },
 
