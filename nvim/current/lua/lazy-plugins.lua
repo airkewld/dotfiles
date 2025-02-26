@@ -287,16 +287,16 @@ require('lazy').setup({
       workspaces = {
         {
           name = "work",
-          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Work",
+          path = "~/work/obsidian/notes/",
         },
         {
           name = "personal",
-          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Personal",
+          path = "~/dev/obsidian/notes/",
         },
       },
 
       templates = {
-        folder = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Templates",
+        folder = "~/work/obsidian/Templates",
         date_format = "%Y-%m-%d-%a",
         time_format = "%H:%M",
       },

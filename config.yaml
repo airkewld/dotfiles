@@ -11,6 +11,6 @@
   - tmux
   - nvim
   - krew
-  - go-search
+#  - go-search
   - colima
   # - window-manager
