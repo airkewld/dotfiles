@@ -43,7 +43,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.vimwiki_list = { { path = '~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Notes/Work', syntax = 'markdown', ext = '.md' } }
+vim.g.vimwiki_list = { { path = '~/work/obsidian/notes/', syntax = 'markdown', ext = '.md' } }
 vim.g.vimwiki_global_ext = 0
 
 -- [[ Install `lazy.nvim` plugin manager ]]

@@ -72,6 +72,9 @@ vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
 vim.opt.foldenable = false
 vim.opt.conceallevel = 1
+vim.opt.spell = true
+vim.opt.spellsuggest = { "best", 9 }
+vim.opt.spelllang = { "en_us" }
 
 
 
