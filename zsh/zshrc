@@ -47,7 +47,7 @@ alias cls="clear"
 alias k=kubectl
 alias ks="k9s"
 
-alias v="nvim ."
+alias v="nvim"
 alias vim="nvim"
 
 alias watch="viddy"
