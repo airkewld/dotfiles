@@ -60,9 +60,9 @@ require('keymaps')
 
 -- [[ Configure Telescope ]]
 -- (fuzzy finder)
-require('telescope-setup')
-vim.cmd(
-  [[autocmd VimEnter * lua require('telescope.builtin').find_files({find_command = {"rg", "--ignore", "--hidden", "--files"}})]])
+-- require('telescope-setup')
+-- vim.cmd(
+--   [[autocmd VimEnter * lua require('telescope').extensions.git_worktree.git_worktrees()]])
 
 -- [[ Configure Treesitter ]]
 -- (syntax parser for highlighting)

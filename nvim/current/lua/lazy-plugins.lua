@@ -23,6 +23,38 @@ require('lazy').setup({
     end
   },
 
+  -- Dashboard
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local dashboard = require("alpha.themes.dashboard")
+      dashboard.section.header.val = {
+        "Neovim " .. vim.version().major .. "." .. vim.version().minor,
+        "",
+        "     🚀"
+      }
+      dashboard.section.buttons.val = {
+        dashboard.button("SPC gwl", "🌿  Worktrees",
+          ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>"),
+        dashboard.button("SPC gwn", "🌱  New Worktree",
+          ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>"),
+        dashboard.button("SPC ff", "🔍  Find file",
+          ":lua require('telescope.builtin').find_files({ find_command = { 'rg', '--ignore', '--hidden', '--files' } })<CR>"),
+        dashboard.button("SPC lg", "🗂  Find text", ":lua require('telescope.builtin').live_grep()<CR>"),
+        --
+      }
+
+      dashboard.section.footer.val = function()
+        local stats = require("lazy").stats()
+        local plugins = "⚡ " .. stats.count .. " plugins loaded in " .. stats.startuptime .. "ms"
+        return plugins
+      end
+
+      require("alpha").setup(dashboard.config)
+    end,
+  },
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
