@@ -10,6 +10,18 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  {
+    'ruifm/gitlinker.nvim',
+    config = function()
+      require('gitlinker').setup({
+        opts = {
+          action_callback = require('gitlinker.actions').open_in_browser,
+          print_url = true,
+        },
+        mappings = '<leader>gu'
+      })
+    end
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
