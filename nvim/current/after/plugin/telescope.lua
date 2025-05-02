@@ -28,7 +28,7 @@ require('telescope').setup {
         file_browser = {
             theme = "ivy",
             hijack_netrw = false,
-            depth = 3,
+            depth = 5,
             collapse_dirs = true,
             hidden = { file_browser = true, folder_browser = true },
             mappings = {
@@ -92,14 +92,14 @@ vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_co
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
     { noremap = true, silent = true })
--- telescope file browser
-vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
-    { noremap = true, silent = true })
 -- quickfix commands
 vim.keymap.set('n', '<leader>cn', [[<cmd>:cn <CR>]], { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', [[<cmd>:cp <CR>]], { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cc', [[<cmd>:cclose <CR>]], { noremap = true, silent = true })
 
+-- telescope file browser
+vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
+    { noremap = true, silent = true })
 -- file_browser docs
 
 -- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
