@@ -1,4 +1,4 @@
--- [[ Configure plugins ]]
+-- [[ Configure plugins ]]lazy-
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -305,11 +305,24 @@ require('lazy').setup({
   'github/copilot.vim',
 
   -- nvim tree
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   config = function()
+  --     require("nvim-tree").setup {}
+  --   end
+  -- },
+
+  -- oil.nvim
   {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require("nvim-tree").setup {}
-    end
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 
   -- add rooter
