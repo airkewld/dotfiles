@@ -10,6 +10,11 @@ function _G.get_oil_winbar()
     end
 end
 
+-- configure keymap to use ctrl + n to open oil
+vim.keymap.set("n", "<C-n>", function()
+    require("oil").open_float()
+end, { desc = "Open parent directory" })
+
 require("oil").setup({
     win_options = {
         winbar = "%!v:lua.get_oil_winbar()",
