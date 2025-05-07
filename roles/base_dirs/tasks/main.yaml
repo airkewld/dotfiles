@@ -5,10 +5,10 @@
     state: directory
     mode: '0755'
   with_items:
-    - dev
+    - dev/obsidian/notes/
     - temp
     - study
-    - work
+    - work/obsidian/notes
   tags:
     - base_dirs
     - always
@@ -21,9 +21,9 @@
   with_items:
     - .config
     - .kube
-    - dev
+    - dev/obsidian/notes
     - temp
-    - work
+    - work/obsidian/notes
   tags:
     - base_dirs
     - always
