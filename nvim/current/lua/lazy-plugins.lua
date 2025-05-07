@@ -35,10 +35,6 @@ require('lazy').setup({
         "     🚀"
       }
       dashboard.section.buttons.val = {
-        dashboard.button("SPC gwl", "🌿  Worktrees",
-          ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>"),
-        dashboard.button("SPC gwn", "🌱  New Worktree",
-          ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>"),
         dashboard.button("SPC ff", "🔍  Find file",
           ":lua require('telescope.builtin').find_files({ find_command = { 'rg', '--ignore', '--hidden', '--files' } })<CR>"),
         dashboard.button("SPC lg", "🗂  Find text", ":lua require('telescope.builtin').live_grep()<CR>"),
@@ -305,12 +301,12 @@ require('lazy').setup({
   'github/copilot.vim',
 
   -- nvim tree
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   config = function()
-  --     require("nvim-tree").setup {}
-  --   end
-  -- },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  },
 
   -- oil.nvim
   {
