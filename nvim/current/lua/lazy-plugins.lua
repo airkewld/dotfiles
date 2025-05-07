@@ -10,6 +10,46 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  {
+    'ruifm/gitlinker.nvim',
+    config = function()
+      require('gitlinker').setup({
+        opts = {
+          action_callback = require('gitlinker.actions').open_in_browser,
+          print_url = true,
+        },
+        mappings = '<leader>gu'
+      })
+    end
+  },
+
+  -- Dashboard
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local dashboard = require("alpha.themes.dashboard")
+      dashboard.section.header.val = {
+        "Neovim " .. vim.version().major .. "." .. vim.version().minor,
+        "",
+        "     🚀"
+      }
+      dashboard.section.buttons.val = {
+        dashboard.button("SPC ff", "🔍  Find file",
+          ":lua require('telescope.builtin').find_files({ find_command = { 'rg', '--ignore', '--hidden', '--files' } })<CR>"),
+        dashboard.button("SPC lg", "🗂  Find text", ":lua require('telescope.builtin').live_grep()<CR>"),
+        --
+      }
+
+      dashboard.section.footer.val = function()
+        local stats = require("lazy").stats()
+        local plugins = "⚡ " .. stats.count .. " plugins loaded in " .. stats.startuptime .. "ms"
+        return plugins
+      end
+
+      require("alpha").setup(dashboard.config)
+    end,
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -261,12 +301,12 @@ require('lazy').setup({
   'github/copilot.vim',
 
   -- nvim tree
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   config = function()
-  --     require("nvim-tree").setup {}
-  --   end
-  -- },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  },
 
   -- oil.nvim
   {
@@ -300,16 +340,16 @@ require('lazy').setup({
       workspaces = {
         {
           name = "work",
-          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Work",
+          path = "~/work/obsidian/notes/",
         },
         {
           name = "personal",
-          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Personal",
+          path = "~/dev/obsidian/notes/",
         },
       },
 
       templates = {
-        folder = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Templates",
+        folder = "~/work/obsidian/Templates",
         date_format = "%Y-%m-%d-%a",
         time_format = "%H:%M",
       },

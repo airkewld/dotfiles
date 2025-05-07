@@ -66,10 +66,26 @@ vim.keymap.set('n', '<leader>bf', [[<cmd>lua require('telescope.builtin').curren
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>lg', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
     { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gwl', [[<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]],
-    { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gwn', [[<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
-    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gwl', function()
+    -- Close nvim-tree if it's open
+    local ok, api = pcall(require, "nvim-tree.api")
+    if ok then
+        api.tree.close()
+    end
+
+    -- Open Telescope git worktrees
+    require("telescope").extensions.git_worktree.git_worktrees()
+end, { noremap = true, silent = true, desc = "List Git Worktrees" })
+vim.keymap.set('n', '<leader>gwn', function()
+    -- Close nvim-tree if it's open
+    local ok, api = pcall(require, "nvim-tree.api")
+    if ok then
+        api.tree.close()
+    end
+
+    -- Open Telescope create_git_worktree picker
+    require("telescope").extensions.git_worktree.create_git_worktree()
+end, { noremap = true, silent = true, desc = "Create Git Worktree" })
 -- vim.keymap.set('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]],
 --     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]],

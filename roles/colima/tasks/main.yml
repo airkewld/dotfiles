@@ -1,7 +1,17 @@
 ---
 # tasks file for colima
+- name: Check if Docker is running
+  ansible.builtin.shell: docker info
+  register: docker_status
+  ignore_errors: true
+  changed_when: false
+  tags:
+    - colima
+    - always
+
 - name: Start colima
   ansible.builtin.shell: colima start --arch aarch64 --vm-type=vz --vz-rosetta -m 2 -c 1
+  when: docker_status.rc != 0
   tags:
     - colima
     - always
