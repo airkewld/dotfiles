@@ -97,6 +97,10 @@ vim.keymap.set('n', '<leader>cn', [[<cmd>:cn <CR>]], { noremap = true, silent = 
 vim.keymap.set('n', '<leader>cp', [[<cmd>:cp <CR>]], { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cc', [[<cmd>:cclose <CR>]], { noremap = true, silent = true })
 
+-- buffer fuzzy find
+vim.keymap.set('n', '<leader>/', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
+    { noremap = true, silent = true })
+
 -- telescope file browser
 vim.keymap.set('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]],
     { noremap = true, silent = true })
