@@ -77,6 +77,15 @@ function M.delete()
   vim.api.nvim_win_set_cursor(menu_state.winnr, { new_line, 0 })
 end
 
+function M.new_session()
+  M.close()
+  vim.ui.input({ prompt = 'Session name: ' }, function(name)
+    if not name or name == '' then return end
+    local s = session.create(name)
+    if s then require('claude').switch_to_active() end
+  end)
+end
+
 function M.open()
   if is_open() then
     M.close()
@@ -104,6 +113,7 @@ function M.open()
     border = cfg.border,
     title = ' Claude Sessions ',
     title_pos = 'center',
+    zindex = 60,
   })
 
   M.render()
@@ -116,6 +126,7 @@ function M.open()
   local opts = { buffer = bufnr, nowait = true }
   vim.keymap.set('n', '<CR>', M.select, opts)
   vim.keymap.set('n', 'd', M.delete, opts)
+  vim.keymap.set('n', 'n', M.new_session, opts)
   vim.keymap.set('n', 'q', M.close, opts)
   vim.keymap.set('n', '<Esc>', M.close, opts)
 end

@@ -31,7 +31,6 @@ require('claude').setup({
   keymaps = {
     toggle = '<leader>cl',
     sessions = '<leader>cs',
-    new_session = '<leader>cn',
   },
 })
 ```
@@ -44,7 +43,6 @@ Set any keymap to `false` to disable it.
 |-----|--------|
 | `<leader>cl` | Toggle active session (creates one if none exist) |
 | `<leader>cs` | Open sessions menu |
-| `<leader>cn` | Prompt for name and create a new session |
 
 ## Commands
 
@@ -63,5 +61,6 @@ The sessions menu is a floating buffer listing all sessions. Buffer-local keymap
 | Key | Action |
 |-----|--------|
 | `<CR>` | Select session under cursor |
+| `n` | Create a new named session |
 | `d` | Delete session under cursor |
 | `q` / `<Esc>` | Close menu |

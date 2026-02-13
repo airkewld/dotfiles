@@ -83,14 +83,6 @@ local subcommands = {
   end,
 }
 
-local function new_session_prompt()
-  vim.ui.input({ prompt = 'Session name: ' }, function(name)
-    if not name or name == '' then return end
-    local s = session.create(name)
-    if s then M.switch_to_active() end
-  end)
-end
-
 function M.setup(opts)
   config.setup(opts)
   local keys = config.get().keymaps
@@ -100,7 +92,6 @@ function M.setup(opts)
   end
   map(keys.toggle, toggle, 'Toggle Claude Code')
   map(keys.sessions, menu.open, 'Claude sessions menu')
-  map(keys.new_session, new_session_prompt, 'New named Claude session')
 
   vim.api.nvim_create_user_command('Claude', function(cmd)
     local args = cmd.fargs
