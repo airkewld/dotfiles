@@ -5,6 +5,7 @@ local M = {}
 
 local defaults = {
   idle_timeout_ms = 3000,
+  auto_remove_exited = false,
   window = {
     width = 0.8,
     height = 0.8,

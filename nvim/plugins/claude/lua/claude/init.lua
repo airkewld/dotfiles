@@ -21,10 +21,27 @@ local function hide()
   end
 end
 
+local function mode_label()
+  local mode = vim.api.nvim_get_mode().mode
+  if mode == 't' or mode == 'i' then
+    return 'Interactive'
+  end
+  return 'Review'
+end
+
+local function update_title()
+  local winnr = session.get_winnr()
+  local s = session.get_active()
+  if winnr and vim.api.nvim_win_is_valid(winnr) and s then
+    window.set_title(winnr, s.name, mode_label())
+  end
+end
+
 local function show(s)
   local winnr = window.open(s.bufnr, s.name)
   session.set_winnr(winnr)
   vim.cmd('startinsert')
+  update_title()
 end
 
 function M.switch_to_active()
@@ -34,8 +51,8 @@ function M.switch_to_active()
   local winnr = session.get_winnr()
   if winnr and vim.api.nvim_win_is_valid(winnr) then
     vim.api.nvim_win_set_buf(winnr, s.bufnr)
-    window.set_title(winnr, s.name)
     vim.cmd('startinsert')
+    update_title()
   else
     show(s)
   end
@@ -64,10 +81,34 @@ local function toggle()
   show(s)
 end
 
+local function send_to_session(opts)
+  local s = session.get_active()
+  if not s or not s.is_alive then
+    vim.notify('Claude: no active running session', vim.log.levels.ERROR)
+    return
+  end
+
+  local terminal = require('claude.terminal')
+
+  if opts.range > 0 then
+    local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)
+    local filepath = vim.fn.expand('%:.')
+    local text = string.format(
+      'From %s (lines %d-%d):\n```\n%s\n```',
+      filepath, opts.line1, opts.line2, table.concat(lines, '\n')
+    )
+    terminal.send_input(s.job_id, text)
+  else
+    local filepath = vim.fn.expand('%:p')
+    terminal.send_input(s.job_id, '/add-file ' .. filepath)
+  end
+end
+
 local subcommands = {
   new = function(args)
     local name = args[1]
-    local s = session.create(name)
+    local cli_args = { unpack(args, 2) }
+    local s = session.create(name, #cli_args > 0 and cli_args or nil)
     if s then M.switch_to_active() end
   end,
   sessions = function()
@@ -100,6 +141,10 @@ function M.setup(opts)
       toggle()
       return
     end
+    if sub == 'send' then
+      send_to_session(cmd)
+      return
+    end
     local handler = subcommands[sub]
     if handler then
       handler({ unpack(args, 2) })
@@ -108,12 +153,17 @@ function M.setup(opts)
     end
   end, {
     nargs = '*',
+    range = true,
     complete = function(_, line)
       local parts = vim.split(line, '%s+')
       if #parts <= 2 then
         local prefix = parts[2] or ''
-        local matches = {}
+        local all_cmds = { 'send' }
         for name, _ in pairs(subcommands) do
+          table.insert(all_cmds, name)
+        end
+        local matches = {}
+        for _, name in ipairs(all_cmds) do
           if name:find(prefix, 1, true) == 1 then
             table.insert(matches, name)
           end
@@ -131,6 +181,17 @@ function M.setup(opts)
       local bufnr = ev.data and ev.data.bufnr
       if bufnr then
         session.on_exit(bufnr)
+      end
+    end,
+  })
+
+  vim.api.nvim_create_autocmd('ModeChanged', {
+    callback = function()
+      if win_visible() then
+        local cur_win = vim.api.nvim_get_current_win()
+        if cur_win == session.get_winnr() then
+          update_title()
+        end
       end
     end,
   })

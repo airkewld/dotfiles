@@ -44,7 +44,7 @@ local function watch_output(session)
   })
 end
 
-function M.create(name)
+function M.create(name, args)
   if vim.fn.executable('claude') ~= 1 then
     vim.notify('claude: not found in PATH', vim.log.levels.ERROR)
     return nil
@@ -62,7 +62,7 @@ function M.create(name)
     end
   end
 
-  local bufnr, job_id = terminal.create()
+  local bufnr, job_id = terminal.create(args)
   local session = {
     name = name,
     bufnr = bufnr,
@@ -130,6 +130,30 @@ function M.active_index()
   return state.active
 end
 
+function M.swap(i, j)
+  if i < 1 or i > #state.sessions or j < 1 or j > #state.sessions then return false end
+  state.sessions[i], state.sessions[j] = state.sessions[j], state.sessions[i]
+  if state.active == i then
+    state.active = j
+  elseif state.active == j then
+    state.active = i
+  end
+  return true
+end
+
+function M.rename(index, new_name)
+  local s = state.sessions[index]
+  if not s then return false end
+  for i, other in ipairs(state.sessions) do
+    if i ~= index and other.name == new_name then
+      vim.notify('Claude session "' .. new_name .. '" already exists', vim.log.levels.ERROR)
+      return false
+    end
+  end
+  s.name = new_name
+  return true
+end
+
 function M.find_by_bufnr(bufnr)
   for i, s in ipairs(state.sessions) do
     if s.bufnr == bufnr then
@@ -146,9 +170,27 @@ function M.on_exit(bufnr)
   session.is_alive = false
   stop_idle_timer(session)
 
-  if not session_visible(session) then
+  local was_visible = session_visible(session)
+  if not was_visible then
     vim.notify('Claude (' .. session.name .. ') session ended', vim.log.levels.INFO)
   end
+
+  if config.get().auto_remove_exited then
+    vim.defer_fn(function()
+      local i = M.find_by_bufnr(bufnr)
+      if i then M.remove(i) end
+    end, 2000)
+  end
+end
+
+function M.statusline()
+  if #state.sessions == 0 then return nil end
+  local s = state.sessions[state.active]
+  if not s then return nil end
+  if #state.sessions == 1 then
+    return 'Claude: ' .. s.name
+  end
+  return string.format('Claude: %s [%d/%d]', s.name, state.active, #state.sessions)
 end
 
 function M.get_winnr()

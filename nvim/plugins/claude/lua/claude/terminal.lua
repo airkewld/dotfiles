@@ -3,12 +3,17 @@
 
 local M = {}
 
-function M.create()
+function M.create(args)
+  local cmd = 'claude'
+  if args and #args > 0 then
+    cmd = cmd .. ' ' .. table.concat(args, ' ')
+  end
+
   local bufnr = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_set_option_value('bufhidden', 'hide', { buf = bufnr })
 
   vim.api.nvim_buf_call(bufnr, function()
-    local job_id = vim.fn.termopen('claude', {
+    local job_id = vim.fn.termopen(cmd, {
       on_exit = function()
         vim.api.nvim_exec_autocmds('User', { pattern = 'ClaudeExit', data = { bufnr = bufnr } })
       end,

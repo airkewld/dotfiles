@@ -77,6 +77,44 @@ function M.delete()
   vim.api.nvim_win_set_cursor(menu_state.winnr, { new_line, 0 })
 end
 
+function M.move_up()
+  local cursor = vim.api.nvim_win_get_cursor(menu_state.winnr)
+  local line = cursor[1]
+  if line <= 1 then return end
+  if session.swap(line, line - 1) then
+    M.render()
+    vim.api.nvim_win_set_cursor(menu_state.winnr, { line - 1, 0 })
+  end
+end
+
+function M.move_down()
+  local cursor = vim.api.nvim_win_get_cursor(menu_state.winnr)
+  local line = cursor[1]
+  if line >= session.count() then return end
+  if session.swap(line, line + 1) then
+    M.render()
+    vim.api.nvim_win_set_cursor(menu_state.winnr, { line + 1, 0 })
+  end
+end
+
+function M.rename()
+  local cursor = vim.api.nvim_win_get_cursor(menu_state.winnr)
+  local line = cursor[1]
+  if line < 1 or line > session.count() then return end
+
+  local s = session.list()[line]
+  vim.ui.input({ prompt = 'Rename "' .. s.name .. '": ', default = s.name }, function(new_name)
+    if not new_name or new_name == '' or new_name == s.name then return end
+    if session.rename(line, new_name) then
+      M.render()
+      local winnr = session.get_winnr()
+      if winnr and vim.api.nvim_win_is_valid(winnr) and session.active_index() == line then
+        require('claude.window').set_title(winnr, new_name)
+      end
+    end
+  end)
+end
+
 function M.new_session()
   M.close()
   vim.ui.input({ prompt = 'Session name: ' }, function(name)
@@ -127,6 +165,16 @@ function M.open()
   vim.keymap.set('n', '<CR>', M.select, opts)
   vim.keymap.set('n', 'd', M.delete, opts)
   vim.keymap.set('n', 'n', M.new_session, opts)
+  vim.keymap.set('n', 'r', M.rename, opts)
+  vim.keymap.set('n', 'K', M.move_up, opts)
+  vim.keymap.set('n', 'J', M.move_down, opts)
+  for i = 1, math.min(session.count(), 9) do
+    vim.keymap.set('n', tostring(i), function()
+      session.set_active(i)
+      M.close()
+      require('claude').switch_to_active()
+    end, opts)
+  end
   vim.keymap.set('n', 'q', M.close, opts)
   vim.keymap.set('n', '<Esc>', M.close, opts)
 end
