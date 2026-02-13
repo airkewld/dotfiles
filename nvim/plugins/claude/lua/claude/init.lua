@@ -1,6 +1,7 @@
 -- ABOUTME: Public API for the Claude Code Neovim plugin
 -- ABOUTME: Wires keymaps, commands, and autocmds to session and menu modules
 
+local config = require('claude.config')
 local window = require('claude.window')
 local session = require('claude.session')
 local menu = require('claude.menu')
@@ -82,13 +83,27 @@ local subcommands = {
   end,
 }
 
-function M.setup()
-  vim.keymap.set('n', '<leader>cl', toggle, {
-    desc = 'Toggle Claude Code',
-  })
+local function new_session_prompt()
+  vim.ui.input({ prompt = 'Session name: ' }, function(name)
+    if not name or name == '' then return end
+    local s = session.create(name)
+    if s then M.switch_to_active() end
+  end)
+end
 
-  vim.api.nvim_create_user_command('Claude', function(opts)
-    local args = opts.fargs
+function M.setup(opts)
+  config.setup(opts)
+  local keys = config.get().keymaps
+
+  local function map(key, fn, desc)
+    if key then vim.keymap.set('n', key, fn, { desc = desc }) end
+  end
+  map(keys.toggle, toggle, 'Toggle Claude Code')
+  map(keys.sessions, menu.open, 'Claude sessions menu')
+  map(keys.new_session, new_session_prompt, 'New named Claude session')
+
+  vim.api.nvim_create_user_command('Claude', function(cmd)
+    local args = cmd.fargs
     local sub = args[1]
     if not sub then
       toggle()
