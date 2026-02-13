@@ -16,8 +16,8 @@ local defaults = {
   },
   keymaps = {
     toggle = '<leader>cl',
-    sessions = '<leader>cls',
-    new_session = '<leader>cln',
+    sessions = '<leader>cs',
+    new_session = '<leader>cn',
   },
 }
 

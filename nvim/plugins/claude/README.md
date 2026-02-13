@@ -30,8 +30,8 @@ require('claude').setup({
   },
   keymaps = {
     toggle = '<leader>cl',
-    sessions = '<leader>cls',
-    new_session = '<leader>cln',
+    sessions = '<leader>cs',
+    new_session = '<leader>cn',
   },
 })
 ```
@@ -43,8 +43,8 @@ Set any keymap to `false` to disable it.
 | Key | Action |
 |-----|--------|
 | `<leader>cl` | Toggle active session (creates one if none exist) |
-| `<leader>cls` | Open sessions menu |
-| `<leader>cln` | Prompt for name and create a new session |
+| `<leader>cs` | Open sessions menu |
+| `<leader>cn` | Prompt for name and create a new session |
 
 ## Commands
 
