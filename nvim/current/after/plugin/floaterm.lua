@@ -21,8 +21,3 @@ vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>:ToggleTerm direction=horizont
 vim.api.nvim_set_keymap('n', '<leader>dm',
     [[<cmd>:FloatermNew --name=tmux --title=update_dotfiles ~/.config/dotfiles-update.sh<CR>]],
     { noremap = true, silent = true })
-
--- claude
-vim.api.nvim_set_keymap('n', '<leader>cld',
-    [[<cmd>:FloatermNew --name=claude --title=🤖 --wintype=split<CR>]],
-    { noremap = true, silent = true })

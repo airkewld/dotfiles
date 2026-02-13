@@ -293,7 +293,11 @@ require('lazy').setup({
   'nvim-telescope/telescope-file-browser.nvim',
 
   -- harpoon
-  'ThePrimeagen/harpoon',
+  {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" }
+  },
 
   -- worktrees
   'ThePrimeagen/git-worktree.nvim',
@@ -369,8 +373,8 @@ require('lazy').setup({
   -- Use auto-pairs
   'jiangmiao/auto-pairs',
 
-  -- copilot
-  'github/copilot.vim',
+  -- -- copilot
+  -- 'github/copilot.vim',
 
   -- nvim tree
   {
@@ -477,40 +481,13 @@ require('lazy').setup({
   },
 
   -- AI
-  -- Claude
-  -- {
-  --   "coder/claudecode.nvim",
-  --   dependencies = { "folke/snacks.nvim" },
-  --   config = true,
-  --   keys = {
-  --     { "<leader>a",  nil,                              desc = "AI/Claude Code" },
-  --     { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
-  --     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
-  --     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
-  --     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-  --     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-  --     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
-  --     { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                  desc = "Send to Claude" },
-  --     {
-  --       "<leader>as",
-  --       "<cmd>ClaudeCodeTreeAdd<cr>",
-  --       desc = "Add file",
-  --       ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-  --     },
-  --     -- Diff management
-  --     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-  --     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
-  --   },
-  -- },
-  -- {
-  --   "greggh/claude-code.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim", -- Required for git operations
-  --   },
-  --   config = function()
-  --     require("claude-code").setup()
-  --   end
-  -- },
+  -- Amp Plugin
+  {
+    "sourcegraph/amp.nvim",
+    branch = "main",
+    lazy = false,
+    opts = { auto_start = true, log_level = "info" },
+  },
   {
     "robitx/gp.nvim",
     config = function()
@@ -538,6 +515,8 @@ require('lazy').setup({
       -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
     end,
   },
+
+  { dir = '~/dotfiles/nvim/plugins/claude', config = function() require('claude').setup() end },
 
   -- END PLUGINS
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
