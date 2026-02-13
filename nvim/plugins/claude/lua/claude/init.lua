@@ -102,6 +102,10 @@ local function send_to_session(opts)
     local filepath = vim.fn.expand('%:p')
     terminal.send_input(s.job_id, '/add-file ' .. filepath)
   end
+
+  if not win_visible() then
+    show(s)
+  end
 end
 
 local subcommands = {
