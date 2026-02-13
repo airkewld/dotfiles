@@ -516,7 +516,10 @@ require('lazy').setup({
     end,
   },
 
-  { dir = '~/dotfiles/nvim/plugins/claude', config = function() require('claude').setup() end },
+  {
+    dir = '~/dotfiles/nvim/plugins/claude',
+    config = function() require('claude').setup() end,
+  },
 
   -- END PLUGINS
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

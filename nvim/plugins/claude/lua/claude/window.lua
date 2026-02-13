@@ -1,6 +1,8 @@
 -- ABOUTME: Creates and manages the floating window for Claude terminal output
 -- ABOUTME: Handles show/hide lifecycle with centered positioning
 
+local config = require('claude.config')
+
 local M = {}
 
 local function make_title(name)
@@ -11,8 +13,9 @@ local function make_title(name)
 end
 
 function M.open(bufnr, name)
-  local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.8)
+  local cfg = config.get().window
+  local width = math.floor(vim.o.columns * cfg.width)
+  local height = math.floor(vim.o.lines * cfg.height)
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
 
@@ -23,7 +26,7 @@ function M.open(bufnr, name)
     row = row,
     col = col,
     style = 'minimal',
-    border = 'rounded',
+    border = cfg.border,
     title = make_title(name),
     title_pos = 'center',
   })
@@ -41,8 +44,9 @@ function M.set_title(winnr, name)
 end
 
 function M.resize(winnr)
-  local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.8)
+  local cfg = config.get().window
+  local width = math.floor(vim.o.columns * cfg.width)
+  local height = math.floor(vim.o.lines * cfg.height)
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
 

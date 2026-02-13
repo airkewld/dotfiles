@@ -2,10 +2,9 @@
 -- ABOUTME: Provides create/remove/cycle operations and shared window state
 
 local terminal = require('claude.terminal')
+local config = require('claude.config')
 
 local M = {}
-
-local IDLE_TIMEOUT_MS = 3000
 
 local state = {
   sessions = {},
@@ -35,7 +34,7 @@ local function watch_output(session)
       session.notified_idle = false
       stop_idle_timer(session)
       session.idle_timer = vim.uv.new_timer()
-      session.idle_timer:start(IDLE_TIMEOUT_MS, 0, vim.schedule_wrap(function()
+      session.idle_timer:start(config.get().idle_timeout_ms, 0, vim.schedule_wrap(function()
         if not session_visible(session) and session.is_alive and not session.notified_idle then
           session.notified_idle = true
           vim.notify('Claude (' .. session.name .. ') is waiting for input', vim.log.levels.INFO)
