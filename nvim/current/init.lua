@@ -76,6 +76,24 @@ require('lsp-setup')
 -- (completion)
 require('cmp-setup')
 
+-- [[ LSP Log Management ]]
+-- Clean up LSP log file if it exceeds 10MB on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local log_path = vim.fn.stdpath("state") .. "/lsp.log"
+    local stat = vim.loop.fs_stat(log_path)
+    if stat and stat.size > 10 * 1024 * 1024 then -- 10MB
+      -- Truncate the log file
+      local file = io.open(log_path, "w")
+      if file then
+        file:write("[LOG TRUNCATED] File exceeded 10MB limit\n")
+        file:close()
+        vim.notify("LSP log file was truncated (exceeded 10MB)", vim.log.levels.INFO)
+      end
+    end
+  end,
+  desc = "Cleanup LSP log file if too large"
+})
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`

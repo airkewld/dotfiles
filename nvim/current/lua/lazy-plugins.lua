@@ -1,4 +1,4 @@
--- [[ Configure plugins ]]lazy-
+-- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -29,6 +29,68 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local dashboard = require("alpha.themes.dashboard")
+
+      -- Cache for API response
+      local api_cache = {
+        reason = nil,
+        last_fetch = 0,
+        fetch_count = 0,
+        last_date = nil
+      }
+
+      -- Function to check if we should refresh (limit to 5 times per day during 9AM-6PM EST)
+      local function should_refresh()
+        local current_time = os.time()
+        local date = os.date("*t", current_time)
+        local today = os.date("%Y-%m-%d", current_time)
+
+        -- Reset counter if it's a new day
+        if api_cache.last_date ~= today then
+          api_cache.fetch_count = 0
+          api_cache.last_date = today
+        end
+
+        -- Check if we've already fetched 5 times today
+        if api_cache.fetch_count >= 5 then
+          return false
+        end
+
+        -- Convert to EST (UTC-5 or UTC-4 for EDT)
+        local est_hour = (date.hour - 5) % 24
+
+        -- Only refresh between 9AM-6PM EST
+        if est_hour < 9 or est_hour >= 18 then
+          return false
+        end
+
+        return true
+      end
+
+      -- Function to fetch API
+      local function fetch_api_reason()
+        if not should_refresh() and api_cache.reason then
+          return api_cache.reason
+        end
+
+        local handle = io.popen("curl -s 'https://naas.isalman.dev/no'")
+        if handle then
+          local response = handle:read("*a")
+          handle:close()
+
+          -- Parse JSON to get the reason value
+          local json_pattern = '"reason":"(.-)"'
+          local reason = response:match(json_pattern)
+          if reason then
+            api_cache.reason = reason
+            api_cache.last_fetch = os.time()
+            api_cache.fetch_count = api_cache.fetch_count + 1
+            return reason
+          end
+        end
+
+        return api_cache.reason or "No motivation available"
+      end
+
       dashboard.section.header.val = {
         "Neovim " .. vim.version().major .. "." .. vim.version().minor,
         "",
@@ -42,9 +104,15 @@ require('lazy').setup({
       }
 
       dashboard.section.footer.val = function()
+        -- Get API reason (cached or fresh)
+        local reason = fetch_api_reason()
+        local api_reason = reason and ("\n\n💭 " .. reason) or ""
+
+        -- Get lazy.nvim stats
         local stats = require("lazy").stats()
         local plugins = "⚡ " .. stats.count .. " plugins loaded in " .. stats.startuptime .. "ms"
-        return plugins
+
+        return plugins .. api_reason
       end
 
       require("alpha").setup(dashboard.config)
@@ -288,7 +356,11 @@ require('lazy').setup({
   -- markdown reader
   {
     "iamcco/markdown-preview.nvim",
-    build = function() vim.fn["mkdp#util#install"]() end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   -- vimwiki
@@ -331,7 +403,7 @@ require('lazy').setup({
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
-    ft = "*",
+    ft = "markdown",
     dependencies = {
       "nvim-lua/plenary.nvim",
 
@@ -405,6 +477,40 @@ require('lazy').setup({
   },
 
   -- AI
+  -- Claude
+  -- {
+  --   "coder/claudecode.nvim",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   config = true,
+  --   keys = {
+  --     { "<leader>a",  nil,                              desc = "AI/Claude Code" },
+  --     { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+  --     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
+  --     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
+  --     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+  --     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+  --     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
+  --     { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                  desc = "Send to Claude" },
+  --     {
+  --       "<leader>as",
+  --       "<cmd>ClaudeCodeTreeAdd<cr>",
+  --       desc = "Add file",
+  --       ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+  --     },
+  --     -- Diff management
+  --     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+  --     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+  --   },
+  -- },
+  -- {
+  --   "greggh/claude-code.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for git operations
+  --   },
+  --   config = function()
+  --     require("claude-code").setup()
+  --   end
+  -- },
   {
     "robitx/gp.nvim",
     config = function()
