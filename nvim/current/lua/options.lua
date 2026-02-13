@@ -72,10 +72,7 @@ vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
 vim.opt.foldenable = false
 vim.opt.autoread = true
-
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-  command = "checktime",
-})
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime", })
 vim.opt.conceallevel = 1
 vim.opt.spell = true
 vim.opt.spellsuggest = { "best", 9 }

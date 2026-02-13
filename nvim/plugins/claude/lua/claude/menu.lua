@@ -2,6 +2,7 @@
 -- ABOUTME: Supports select, delete, and keyboard navigation
 
 local session = require('claude.session')
+local config = require('claude.config')
 
 local M = {}
 
@@ -86,8 +87,9 @@ function M.open()
   vim.api.nvim_set_option_value('bufhidden', 'wipe', { buf = bufnr })
   menu_state.bufnr = bufnr
 
+  local cfg = config.get().menu
   local line_count = math.max(session.count(), 1)
-  local width = math.floor(vim.o.columns * 0.5)
+  local width = math.floor(vim.o.columns * cfg.width)
   local height = line_count + 2
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
@@ -99,7 +101,7 @@ function M.open()
     row = row,
     col = col,
     style = 'minimal',
-    border = 'rounded',
+    border = cfg.border,
     title = ' Claude Sessions ',
     title_pos = 'center',
   })

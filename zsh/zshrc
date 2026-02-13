@@ -122,3 +122,15 @@ export FAV_SE="google"
 
 ## dive cli
 alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive"
+
+
+## stupid tf
+alias tp="just clean && just local init && just local plan"
+alias tf="just clean && just init && just plan"
+
+# cf
+export CLOUDFLARE_API_KEY="4dca22d44cbba15818a726cc740a51218e56c"
+export CLOUDFLARE_EMAIL="oscar.rodriguez@ro.co"
+
+# claude
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
