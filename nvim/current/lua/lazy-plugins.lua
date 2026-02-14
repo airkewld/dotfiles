@@ -294,9 +294,9 @@ require('lazy').setup({
 
   -- harpoon
   {
-      "ThePrimeagen/harpoon",
-      branch = "harpoon2",
-      dependencies = { "nvim-lua/plenary.nvim" }
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
   },
 
   -- worktrees
@@ -517,8 +517,10 @@ require('lazy').setup({
   },
 
   {
-    dir = '~/dotfiles/nvim/plugins/claude',
-    config = function() require('claude').setup() end,
+    'airkewld/claude.nvim',
+    config = function()
+      require('claude').setup()
+    end,
   },
 
   -- END PLUGINS
