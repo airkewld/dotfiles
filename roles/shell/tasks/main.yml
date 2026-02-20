@@ -133,6 +133,35 @@
     - shell
     - always
 
+- name: Copy iTerm profile with username replaced
+  ansible.builtin.copy:
+    src: iterm_profile/Default.json
+    dest: /tmp/iterm_Default.json
+    mode: '0644'
+  tags:
+    - shell
+    - always
+
+- name: Replace __USERNAME__ placeholder in iTerm profile
+  ansible.builtin.replace:
+    path: /tmp/iterm_Default.json
+    regexp: '__USERNAME__'
+    replace: "{{ ansible_user_id }}"
+  tags:
+    - shell
+    - always
+
+- name: Install iTerm profile
+  ansible.builtin.copy:
+    src: /tmp/iterm_Default.json
+    dest: "~/Library/Application Support/iTerm2/DynamicProfiles/Default.json"
+    remote_src: yes
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  tags:
+    - shell
+    - always
+
 - name: Add correct p10k source (intel chip)
   ansible.builtin.lineinfile:
     path: ~/.zshrc
