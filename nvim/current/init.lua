@@ -64,9 +64,6 @@ require('keymaps')
 -- vim.cmd(
 --   [[autocmd VimEnter * lua require('telescope').extensions.git_worktree.git_worktrees()]])
 
--- [[ Configure Treesitter ]]
--- (syntax parser for highlighting)
-require('treesitter-setup')
 
 -- [[ Configure LSP ]]
 -- (Language Server Protocol)
