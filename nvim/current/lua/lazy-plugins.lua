@@ -428,7 +428,7 @@ require('lazy').setup({
   },
 
   -- Use auto-pairs
-  { 'jiangmiao/auto-pairs', event = 'InsertEnter' },
+  'jiangmiao/auto-pairs',
 
   -- -- copilot
   -- 'github/copilot.vim',
