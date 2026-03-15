@@ -38,13 +38,14 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
 
+-- Cache lua bytecode for faster startup
+vim.loader.enable()
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.vimwiki_list = { { path = '~/work/obsidian/notes/', syntax = 'markdown', ext = '.md' } }
-vim.g.vimwiki_global_ext = 0
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 require('lazy-bootstrap')

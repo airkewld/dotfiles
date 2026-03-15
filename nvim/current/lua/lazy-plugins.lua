@@ -8,10 +8,22 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  {
+    'tpope/vim-fugitive',
+    cmd = { 'G', 'Git' },
+    keys = {
+      { '<leader>gp', '<cmd>G pull<CR>', desc = 'Git pull' },
+      { '<leader>gfe', "<cmd>G fetch origin '*:*'<CR>", desc = 'Git fetch' },
+      { '<leader>gs', '<cmd>G<CR>', desc = 'Git status' },
+      { '<leader>ga', '<cmd>Git fetch --all<CR>', desc = 'Git fetch all' },
+      { '<leader>grum', '<cmd>Git rebase upstream/master<CR>', desc = 'Git rebase upstream/master' },
+      { '<leader>grom', '<cmd>Git rebase origin/master<CR>', desc = 'Git rebase origin/master' },
+    },
+  },
+  { 'tpope/vim-rhubarb', cmd = 'GBrowse' },
   {
     'ruifm/gitlinker.nvim',
+    keys = { { '<leader>gu', desc = 'Open git link in browser' } },
     config = function()
       require('gitlinker').setup({
         opts = {
@@ -30,67 +42,6 @@ require('lazy').setup({
     config = function()
       local dashboard = require("alpha.themes.dashboard")
 
-      -- Cache for API response
-      local api_cache = {
-        reason = nil,
-        last_fetch = 0,
-        fetch_count = 0,
-        last_date = nil
-      }
-
-      -- Function to check if we should refresh (limit to 5 times per day during 9AM-6PM EST)
-      local function should_refresh()
-        local current_time = os.time()
-        local date = os.date("*t", current_time)
-        local today = os.date("%Y-%m-%d", current_time)
-
-        -- Reset counter if it's a new day
-        if api_cache.last_date ~= today then
-          api_cache.fetch_count = 0
-          api_cache.last_date = today
-        end
-
-        -- Check if we've already fetched 5 times today
-        if api_cache.fetch_count >= 5 then
-          return false
-        end
-
-        -- Convert to EST (UTC-5 or UTC-4 for EDT)
-        local est_hour = (date.hour - 5) % 24
-
-        -- Only refresh between 9AM-6PM EST
-        if est_hour < 9 or est_hour >= 18 then
-          return false
-        end
-
-        return true
-      end
-
-      -- Function to fetch API
-      local function fetch_api_reason()
-        if not should_refresh() and api_cache.reason then
-          return api_cache.reason
-        end
-
-        local handle = io.popen("curl -s 'https://naas.isalman.dev/no'")
-        if handle then
-          local response = handle:read("*a")
-          handle:close()
-
-          -- Parse JSON to get the reason value
-          local json_pattern = '"reason":"(.-)"'
-          local reason = response:match(json_pattern)
-          if reason then
-            api_cache.reason = reason
-            api_cache.last_fetch = os.time()
-            api_cache.fetch_count = api_cache.fetch_count + 1
-            return reason
-          end
-        end
-
-        return api_cache.reason or "No motivation available"
-      end
-
       dashboard.section.header.val = {
         "Neovim " .. vim.version().major .. "." .. vim.version().minor,
         "",
@@ -100,19 +51,11 @@ require('lazy').setup({
         dashboard.button("SPC ff", "🔍  Find file",
           ":lua require('telescope.builtin').find_files({ find_command = { 'rg', '--ignore', '--hidden', '--files' } })<CR>"),
         dashboard.button("SPC lg", "🗂  Find text", ":lua require('telescope.builtin').live_grep()<CR>"),
-        --
       }
 
       dashboard.section.footer.val = function()
-        -- Get API reason (cached or fresh)
-        local reason = fetch_api_reason()
-        local api_reason = reason and ("\n\n💭 " .. reason) or ""
-
-        -- Get lazy.nvim stats
         local stats = require("lazy").stats()
-        local plugins = "⚡ " .. stats.count .. " plugins loaded in " .. stats.startuptime .. "ms"
-
-        return plugins .. api_reason
+        return "⚡ " .. stats.count .. " plugins loaded in " .. stats.startuptime .. "ms"
       end
 
       require("alpha").setup(dashboard.config)
@@ -378,7 +321,13 @@ require('lazy').setup({
   'ThePrimeagen/git-worktree.nvim',
 
   -- lazygit
-  'kdheepak/lazygit.nvim',
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = 'LazyGit',
+    keys = {
+      { '<leader>gg', '<cmd>LazyGit<CR>', desc = 'LazyGit' },
+    },
+  },
 
   -- status line
   {
@@ -387,10 +336,22 @@ require('lazy').setup({
   },
 
   -- terminals
-  'voldikss/vim-floaterm',
+  {
+    'voldikss/vim-floaterm',
+    cmd = 'FloatermNew',
+    keys = {
+      { '<leader>cff', [[<cmd>FloatermNew --name=sleep --title=taking_a_break... lolcat ~/dotfiles/art/thisIsFine.txt && caffeinate -d<CR>]], desc = 'Caffeinate' },
+      { '<leader>tm', [[<cmd>FloatermNew --name=tmux --title=open_new_project ~/.config/new-windows.sh<CR>]], desc = 'New tmux project' },
+      { '<leader>ts', [[<cmd>FloatermNew --name=tmux --title=open_new_session ~/.config/new-session.sh<CR>]], desc = 'New tmux session' },
+      { '<leader>dm', [[<cmd>FloatermNew --name=tmux --title=update_dotfiles ~/.config/dotfiles-update.sh<CR>]], desc = 'Update dotfiles' },
+    },
+  },
   {
     'akinsho/toggleterm.nvim',
     version = "*",
+    keys = {
+      { '<leader>ft', '<cmd>ToggleTerm direction=horizontal size=10<CR>', desc = 'Toggle terminal' },
+    },
     config = function()
       require("toggleterm").setup {
         size = 20,
@@ -400,7 +361,6 @@ require('lazy').setup({
         shell = vim.o.shell
       }
 
-      -- Keybinding to switch windows directly from terminal mode
       vim.api.nvim_set_keymap('t', '<C-o>', [[<C-\><C-n>]], { noremap = true, silent = true })
     end
   },
@@ -411,6 +371,10 @@ require('lazy').setup({
     dependencies = {
       "anuvyklack/middleclass",
       "anuvyklack/animation.nvim"
+    },
+    cmd = 'WindowsMaximize',
+    keys = {
+      { '<leader>wm', '<cmd>WindowsMaximize<CR>', desc = 'Maximize window' },
     },
     config = function()
       vim.o.winwidth = 10
@@ -423,6 +387,7 @@ require('lazy').setup({
   -- smooth scroll
   {
     'karb94/neoscroll.nvim',
+    event = 'VeryLazy',
     config = function()
       require('neoscroll').setup()
     end
@@ -430,7 +395,13 @@ require('lazy').setup({
 
 
   -- git-blame
-  'f-person/git-blame.nvim',
+  {
+    'f-person/git-blame.nvim',
+    cmd = { 'GitBlameToggle', 'GitBlameOpenCommitURL' },
+    keys = {
+      { '<leader>gco', '<cmd>GitBlameOpenCommitURL<CR>', desc = 'Open commit URL' },
+    },
+  },
 
   -- markdown reader
   {
@@ -443,10 +414,21 @@ require('lazy').setup({
   },
 
   -- vimwiki
-  'vimwiki/vimwiki',
+  {
+    'vimwiki/vimwiki',
+    cmd = { 'VimwikiIndex', 'VimwikiToggleListItem' },
+    ft = 'vimwiki',
+    keys = {
+      { '<leader>lt', '<cmd>VimwikiToggleListItem<CR>', desc = 'Toggle list item' },
+    },
+    init = function()
+      vim.g.vimwiki_list = { { path = '~/work/obsidian/notes/', syntax = 'markdown', ext = '.md' } }
+      vim.g.vimwiki_global_ext = 0
+    end,
+  },
 
   -- Use auto-pairs
-  'jiangmiao/auto-pairs',
+  { 'jiangmiao/auto-pairs', event = 'InsertEnter' },
 
   -- -- copilot
   -- 'github/copilot.vim',
@@ -454,8 +436,63 @@ require('lazy').setup({
   -- nvim tree
   {
     'nvim-tree/nvim-tree.lua',
+    keys = {
+      { '<C-n>', '<cmd>NvimTreeToggle<CR>', desc = 'Toggle file tree' },
+    },
     config = function()
-      require("nvim-tree").setup {}
+      require("nvim-tree").setup {
+        view = {
+          float = {
+            enable = true,
+            quit_on_focus_loss = true,
+            open_win_config = {
+              relative = "editor",
+              border = "rounded",
+              width = 50,
+              height = 30,
+              row = 1,
+              col = 1,
+            },
+          },
+        },
+        actions = {
+          use_system_clipboard = true,
+          change_dir = {
+            enable = true,
+            global = false,
+            restrict_above_cwd = false,
+          },
+          expand_all = {
+            max_folder_discovery = 300,
+            exclude = {},
+          },
+          file_popup = {
+            open_win_config = {
+              col = 1,
+              row = 1,
+              relative = "cursor",
+              border = "shadow",
+              style = "minimal",
+            },
+          },
+          open_file = {
+            quit_on_open = true,
+            resize_window = true,
+            window_picker = {
+              enable = true,
+              picker = "default",
+              chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+              exclude = {
+                filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                buftype = { "nofile", "terminal", "help" },
+              },
+            },
+          },
+          remove_file = {
+            close_window = true,
+          },
+        },
+      }
     end
   },
 
@@ -471,11 +508,6 @@ require('lazy').setup({
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
   },
-
-  -- add rooter
-  -- 'airblade/vim-rooter',
-
-  'nvim-neotest/nvim-nio',
 
   -- obsidian
   {
@@ -565,11 +597,15 @@ require('lazy').setup({
   },
   {
     "robitx/gp.nvim",
+    cmd = { 'GpChatNew', 'GpChatRespond', 'GpNew' },
+    keys = {
+      { '<leader>ch', '<cmd>GpChatNew vsplit<CR>', desc = 'GP chat' },
+      { '<leader>cr', '<cmd>GpChatRespond<CR>', desc = 'GP respond' },
+      { '<leader>gcc', '<cmd>GpNew<CR>', desc = 'GP new' },
+    },
     config = function()
-      local conf = {
-        -- For customization, refer to Install > Configuration in the Documentation/Readme
+      require("gp").setup({
         openai_api_key = os.getenv("OPENAI_API_KEY"),
-
         providers = {
           openai = {
             disable = true,
@@ -583,11 +619,8 @@ require('lazy').setup({
               "cat ~/.config/github-copilot/apps.json | sed -e 's/.*oauth_token...//;s/\".*//'",
             },
           },
-
         }
-      }
-      require("gp").setup(conf)
-      -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
+      })
     end,
   },
 
