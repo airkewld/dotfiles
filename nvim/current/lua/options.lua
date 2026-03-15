@@ -69,7 +69,6 @@ vim.opt.showmode = false
 vim.opt.splitright = true
 vim.opt.updatetime = 50
 vim.opt.expandtab = true
-vim.opt.fileencoding = "utf-8"
 vim.opt.foldenable = false
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime", })
