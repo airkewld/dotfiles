@@ -1,4 +1,6 @@
 {
+  "Profiles" : [
+    {
   "Working Directory" : "\/Users\/__USERNAME__",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -407,7 +409,7 @@
   },
   "Name" : "Default",
   "Blinking Cursor" : true,
-  "Guid" : "AC5DBC99-4C7E-43D6-A82A-11050481E667",
+  "Guid" : "3FE32FC2-7F80-4E11-A4D6-3164A0060FFE",
   "Idle Code" : 0,
   "Ansi 10 Color" : {
     "Red Component" : 0.34509803921568627,
@@ -501,4 +503,6 @@
     "Green Component" : 0.21176470588235294
   },
   "ASCII Ligatures" : false
+    }
+  ]
 }
